@@ -3,6 +3,20 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 
 class Detalle extends Component {
+  constructor(props){
+    super(props)
+    this.state={propiedades : ''}
+  }
+  componentDidMount(){
+    fetch("https://api.themoviedb.org/3/movie/popular")
+    .then(response => response.json())
+    .then( data => this.setState({propiedades : data.results}
+      
+    ))
+    .catch(error => {
+      console.log("el error es: " + error)
+    })
+  }
   render() {
     return (
         <React.Fragment>
