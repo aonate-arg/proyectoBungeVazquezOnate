@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import Card from '../../components/Crad/Card';
 const API = "b4012469dde0367276c9701f8ecc44fe"
 
 class Home extends Component {
@@ -26,6 +27,7 @@ la seccion peliculas y series. Donde van a estar ya cardagas todas las cards.
         return (
             <React.Fragment>
                 <Header />
+                <Card/>
                 <article className="single-card-movie">
                     {this.state.datos.map(pelicula => (
                         <div className="cardBody">
