@@ -7,7 +7,8 @@ class Vertodos extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header/>
+        <Footer/>
       </React.Fragment>
     )
   }
