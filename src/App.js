@@ -6,10 +6,10 @@ import Home from "./screens/Home/Home";
 
 function App() {
   return (
-  <React.Fragment>
-    <Home/>
+    <React.Fragment>
+      <Home />
 
-  </React.Fragment>
+    </React.Fragment>
   );
 }
 
