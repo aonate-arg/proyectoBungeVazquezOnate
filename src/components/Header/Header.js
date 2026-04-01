@@ -1,11 +1,12 @@
 import react from 'react'
+import {Link} from 'react-router-dom';
 
 function Header() {
     return(
         <nav>
             <ul class="nav nav-tabs my-4">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <Link to="/" class="nav-link">Home</Link>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="movies.html">Películas</a>
@@ -14,13 +15,13 @@ function Header() {
                     <a class="nav-link" href="series.html">Series</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="favorites.html">Favoritas</a>
+                    <Link to="/Favoritos" class="nav-link">Favoritos</Link>
                 </li>
                 <li class="nav-item ml-auto">
-                    <a class="nav-link" href="register.html">Registro</a>
+                    <Link to="/Register" class="nav-link">Registro</Link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <Link to="/Login" class="nav-link">Login</Link>
                 </li>
             </ul>
         </nav>
