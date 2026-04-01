@@ -13,10 +13,17 @@ import Favoritos from './screens/Favoritos/Favoritos'
 
 function App() {
   return (
-    <React.Fragment>
-      <Home/>
-
-    </React.Fragment>
+    <Switch>
+      <Route path="/" component={Home} />
+      <Route path="/Login" component={Login}/>
+      <Route path="/Notfound" component={Notfound}/>
+      <Route path="/Register" component={Register}/>
+      <Route path="/Results" component={Results}/>
+      <Route path="/Vertodos" component={Vertodos}/>
+      <Route path="/Detalle" component={Detalle}/>
+      <Route path="/Favoritos" component={Favoritos}/>
+      <Route path="" component={Notfound}/>
+    </Switch>
   );
 }
 
