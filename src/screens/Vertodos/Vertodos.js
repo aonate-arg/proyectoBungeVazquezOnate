@@ -1,12 +1,14 @@
-import React, { Component } from 'react'
-import Header from '../components/Header/Header'
+import React, { Component } from 'react';
+import Header from '../../components/Header/Header';
+import Feader from '../../components/Footer/Footer';
+
 
 class Vertodos extends Component {
   render() {
     return (
-        <React.Fragment>
-            <Header/>
-        </React.Fragment>
+      <React.Fragment>
+        <Header />
+      </React.Fragment>
     )
   }
 }

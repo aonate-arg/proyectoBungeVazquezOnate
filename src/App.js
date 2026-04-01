@@ -14,7 +14,7 @@ import Favoritos from './screens/Favoritos/Favoritos'
 function App() {
   return (
     <React.Fragment>
-      <Home />
+      <Home/>
 
     </React.Fragment>
   );
