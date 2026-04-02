@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Detalle from "./screens/Detalles/Detalle";
 import Favoritos from './screens/Favoritos/Favoritos'
+import Card from "./components/Crad/Card";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/Detalle" component={Detalle}/>
       <Route path="/Favoritos" component={Favoritos}/>
       <Route path="" component={Notfound}/>
+      <Card/>
     </Switch>
   );
 }
