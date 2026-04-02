@@ -16,6 +16,8 @@ class Detalle extends Component {
       .then(data => this.setState({ datos: data.results }, console.log(data.results)))
       .catch(error => console.log(error));
   }
+  
+/*Cambiar URL del fetch y linkear boton*/
 
   render() {
     return (

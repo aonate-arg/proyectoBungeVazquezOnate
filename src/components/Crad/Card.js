@@ -2,30 +2,32 @@ import React, { Component } from 'react'
 
 class Card extends Component {
     constructor(props) {
-        super(props);
-        this.state = {info : props}
-        console.log(props)
+        super(props)
+        this.state = {}
+        
     }
     render() {
         return (
-            <React.Fragment>
                 <article className="single-card-movie">
+                    <h5 className="card-title">{this.props.titulo}</h5>
+
                     <img
-                        src="https://image.tmdb.org/t/p/w500/9PXZIUsSDh4alB80jheWX4fhZmy.jpg"
+                        src={"https://image.tmdb.org/t/p/w500/" + this.props.imagen}
                         className="card-img-top"
                         alt="..."
                     />
                     <div className="cardBody">
-                        <h5 className="card-title">{this.props.title}</h5>
-                        <p className="card-text">
+                        <p className="card-text">{this.props.descripcion}
                         </p>
                         <a href="movie.html" className="btn btn-primary">Ver más</a>
                         <a href="" className="btn alert-primary">♥️</a>
+                        
                     </div>
                 </article>
-            </React.Fragment>
         )
     }
 }
 
 export default Card;
+
+

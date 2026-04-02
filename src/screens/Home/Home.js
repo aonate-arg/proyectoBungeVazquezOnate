@@ -2,8 +2,28 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Card from '../../components/Crad/Card';
-const API = "b4012469dde0367276c9701f8ecc44fe"
+import Peliculas from '../../components/Secciones/Peliculas';
 
+
+
+
+class Home extends Component {
+    render() {
+        return (
+            <React.Fragment>
+                <Header />
+                <Peliculas />
+                <Footer />
+            </React.Fragment>
+        )
+    }
+}
+
+export default Home;
+
+
+
+/*
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -23,6 +43,7 @@ la etiqueta de article agarra toda la estructura de como deberia quedar card.
 Quiere decir que cuandoe este card esa etiqueta article la reemplazamos por la 
 la seccion peliculas y series. Donde van a estar ya cardagas todas las cards.
 */
+/*
     render() {
         return (
             <React.Fragment>
@@ -48,3 +69,4 @@ la seccion peliculas y series. Donde van a estar ya cardagas todas las cards.
 }
 
 export default Home;
+*/
