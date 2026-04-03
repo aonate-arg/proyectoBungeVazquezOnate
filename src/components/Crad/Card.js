@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class Card extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class Card extends Component {
                     <div className="cardBody">
                         <p className="card-text">{this.props.descripcion}
                         </p>
-                        <a href="movie.html" className="btn btn-primary">Ver más</a>
+                        <Link to="/Detalle/" className="btn btn-primary">Ver más</Link>
                         <a href="" className="btn alert-primary">♥️</a>
                         
                     </div>

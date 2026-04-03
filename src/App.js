@@ -23,7 +23,7 @@ function App() {
       <Route path="/Register" component={Register}/>
       <Route path="/Results" component={Results}/>
       <Route path="/Vertodos" component={Vertodos}/>
-      <Route path="/Detalle" component={Detalle}/>
+      <Route path="/Detalle/:id" component={Detalle}/>
       <Route path="/Favoritos" component={Favoritos}/>
       <Route path="" component={Notfound}/>
       <Route path="/Series" component={Series}/>
