@@ -17,15 +17,16 @@ class Peliculas extends Component {
             .catch(error => console.log(error));
     }
 
+    /*Agregar cargando y ver si esta bien primero filter y despues map*/
     render() {
         return (
             <React.Fragment>
                 <h2 className="alert alert-primary">Popular movies this week</h2>
-                <section class="row cards" id="movies">
-                    {this.state.datos.map((pelicula, idx) => (
+                <section className="row cards" id="movies">
+                    {this.state.datos.filter((pelicula, idx) => idx<4).map((pelicula) => (
                         <Card
                             titulo={pelicula.title}
-                            key={pelicula + idx}
+                            id={pelicula.id}
                             imagen={pelicula.backdrop_path}
                             descripcion={pelicula.overview} />
 
@@ -38,3 +39,13 @@ class Peliculas extends Component {
 
 
 export default Peliculas
+
+/*{this.state.datos.map((pelicula, idx) => (
+                        <Card
+                            titulo={pelicula.title}
+                            key={pelicula+idx}
+                            id={pelicula.id}
+                            imagen={pelicula.backdrop_path}
+                            descripcion={pelicula.overview} />
+
+                    ))}*/
