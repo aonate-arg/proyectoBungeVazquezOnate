@@ -10,19 +10,25 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Detalle from "./screens/Detalles/Detalle";
 import Favoritos from './screens/Favoritos/Favoritos'
+import Card from "./components/Crad/Card";
+import Series from "./components/Secciones/Series"
+import Peliculas from "./components/Secciones/Peliculas"
 
 function App() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" exact={true} component={Home} />
       <Route path="/Login" component={Login}/>
       <Route path="/Notfound" component={Notfound}/>
       <Route path="/Register" component={Register}/>
       <Route path="/Results" component={Results}/>
       <Route path="/Vertodos" component={Vertodos}/>
-      <Route path="/Detalle" component={Detalle}/>
+      <Route path="/Detalle/:id" component={Detalle}/>
       <Route path="/Favoritos" component={Favoritos}/>
       <Route path="" component={Notfound}/>
+      <Route path="/Series" component={Series}/>
+      <Route path="/Peliculas" component={Peliculas}/>
+      <Card/>
     </Switch>
   );
 }
