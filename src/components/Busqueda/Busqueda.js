@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class Busqueda extends Component {
     constructor(props){
@@ -7,19 +7,20 @@ class Busqueda extends Component {
         this.state = {valor: ''}
     }
 
-    ejecutarBusqueda(e){
+    evitarBusqueda(e){
         e.preventDefault();
-        this.props.history.push("/Results" + pelicula)
     }
 
     controlarCambios(e){
         this.setState({valor: e.target.value})
+        
     }
 
   render() {
     return (
-      <form onSubmit={(event)=>this.ejecutarBusqueda(event)}>
-        <label>Ingresar Busqueda</label>
+      <form onSubmit={(event)=>this.evitarBusqueda(event)} class="search-form"  method="get">
+        <input type="text" onChange={(event)=>this.controlarCambios(event)} value={this.state.valor} name="searchData" placeholder="Buscar..."/>
+        <button type="submit" class="btn btn-success btn-sm">Buscar</button> 
       </form>
     )
   }

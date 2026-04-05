@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Card from '../../components/Crad/Card';
 import Peliculas from '../../components/Secciones/Peliculas';
+import Busqueda from '../../components/Busqueda/Busqueda';
 
 
 
@@ -12,6 +13,7 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <Header />
+                <Busqueda/>
                 <Peliculas />
                 <Footer />
             </React.Fragment>
