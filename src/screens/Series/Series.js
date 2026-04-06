@@ -30,7 +30,7 @@ class Series extends Component {
         <section className="row cards" id="movies">
           {this.state.datos.filter((serie, idx) => idx<8).map((serie) => (
             <Card
-              titulo={serie.title}
+              titulo={serie.name}
               id={serie.id}
               imagen={serie.backdrop_path}
               descripcion={serie.overview} />

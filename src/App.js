@@ -7,7 +7,7 @@ import Register from './screens/Register/Register';
 import Results from './screens/Results/Results';
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Detalle from "./screens/Detalles/Detalle";
+import Detalle from "./screens/Detalles/DetallePeliculas";
 import Favoritos from './screens/Favoritos/Favoritos'
 import Card from "./components/Crad/Card";
 import Series from './screens/Series/Series'
