@@ -7,7 +7,8 @@ import Register from './screens/Register/Register';
 import Results from './screens/Results/Results';
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Detalle from "./screens/Detalles/DetallePeliculas";
+import DetallePeliculas from "./screens/Detalles/DetallePeliculas";
+import DetalleSeries from "./screens/Detalles/DetalleSeries"
 import Favoritos from './screens/Favoritos/Favoritos'
 import Card from "./components/Crad/Card";
 import Series from './screens/Series/Series'
@@ -21,7 +22,9 @@ function App() {
       <Route path="/Notfound" component={Notfound}/>
       <Route path="/Register" component={Register}/>
       <Route path="/Results" component={Results}/>
-      <Route path="/Detalle/:id" component={Detalle}/>
+      <Route path="/DetallePeliculas/:id" component={DetallePeliculas}/>
+      <Route path="/DetalleSeries/:id" component={DetalleSeries}/>
+
       <Route path="/Favoritos" component={Favoritos}/>
       <Route path="/Series" component={Series}/>
       <Route path="/Peliculas" component={Peliculas}/>

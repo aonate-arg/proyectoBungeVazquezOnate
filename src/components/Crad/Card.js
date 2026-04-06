@@ -40,7 +40,7 @@ class Card extends Component {
                 />
                 <div className="cardBody">
                     <p className="card-text">{this.props.descripcion}</p>
-                    <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ver más</Link>
+                    <Link to={this.props.type=="movie"? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
 
                     <button onClick={()=>this.agregarfav(this.props.id)} value={this.props.id}>♥️</button>

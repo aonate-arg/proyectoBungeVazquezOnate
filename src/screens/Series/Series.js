@@ -27,9 +27,9 @@ class Series extends Component {
         <Header/>
         <h2 class="alert alert-warning">Todas las series</h2>
         <Busqueda/>
-        <section className="row cards" id="movies">
+        <section className="row cards" id="series">
           {this.state.datos.filter((serie, idx) => idx<8).map((serie) => (
-            <Card
+            <Card type="serie"
               titulo={serie.title}
               id={serie.id}
               imagen={serie.backdrop_path}
