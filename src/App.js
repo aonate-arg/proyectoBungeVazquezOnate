@@ -5,7 +5,9 @@ import Login from './screens/Login/Login';
 import Notfound from './screens/Notfound/Notfound';
 import Register from './screens/Register/Register';
 import Results from './screens/Results/Results';
-import Detalle from "./screens/Detalles/Detalle";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Detalle from "./screens/Detalles/DetallePeliculas";
 import Favoritos from './screens/Favoritos/Favoritos'
 import Card from "./components/Crad/Card";
 import Series from './screens/Series/Series'
