@@ -10,8 +10,8 @@ import Header from "./components/Header/Header";
 import Detalle from "./screens/Detalles/Detalle";
 import Favoritos from './screens/Favoritos/Favoritos'
 import Card from "./components/Crad/Card";
-import Series from "./components/Secciones/Series"
-import Peliculas from "./components/Secciones/Peliculas"
+import Series from './screens/Series/Series'
+import Peliculas from './screens/Peliculas/Peliculas'
 
 function App() {
   return (
@@ -23,9 +23,9 @@ function App() {
       <Route path="/Results" component={Results}/>
       <Route path="/Detalle/:id" component={Detalle}/>
       <Route path="/Favoritos" component={Favoritos}/>
-      <Route path="" component={Notfound}/>
       <Route path="/Series" component={Series}/>
       <Route path="/Peliculas" component={Peliculas}/>
+      <Route path="" component={Notfound}/>
       <Card/>
     </Switch>
   );
