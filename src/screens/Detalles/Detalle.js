@@ -18,7 +18,8 @@ class Detalle extends Component {
       .then(response => response.json())
       .then(data => this.setState({datos: data}))
       .catch(error => console.log(error));
-       
+      
+  /*Agregar cargando antes de que lleguen los datos del fetch*/    
       
 
   }

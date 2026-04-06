@@ -4,7 +4,7 @@ import Footer from '../../components/Footer/Footer';
 import Card from '../../components/Crad/Card';
 import Peliculas from '../../components/Secciones/Peliculas';
 import Busqueda from '../../components/Busqueda/Busqueda';
-
+import Series from '../../components/Secciones/Series'
 
 
 
@@ -13,8 +13,9 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <Header />
-                <Busqueda/>
-                <Peliculas />
+                <Busqueda />
+                <Peliculas/>
+                <Series/>
                 <Footer />
             </React.Fragment>
         )
