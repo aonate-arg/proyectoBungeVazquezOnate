@@ -1,32 +1,52 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Card extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
-        
+        this.state = {
+            estadoFavoritos : false
+        }
     }
+
+    evitsubmin(event) {
+        event.preventDefault()
+    }
+    agregarfav(id) {
+        let storage = localStorage.getItem("Fav")
+        let storageJson = JSON.parse(storage)
+            if (storageJson == null ){
+                let primerValor = [id]
+                let primerString = JSON.stringify(primerValor)
+                localStorage.setItem("Fav", primerString)
+            }
+            else{
+                storageJson.push(id)
+                let storageString = JSON.stringify(storageJson)
+                localStorage.setItem("Fav", storageString)
+            }
+            this.setState({estadoFavoritos : true})
+    }
+
     render() {
         return (
-                <article className="single-card-movie">
-                    <h5 className="card-title">{this.props.titulo}</h5>
+            <article className="single-card-movie">
+                <h5 className="card-title">{this.props.titulo}</h5>
 
-                    <img
-                        src={"https://image.tmdb.org/t/p/w500/" + this.props.imagen}
-                        className="card-img-top"
-                        alt="..."
-                    />
-                    <div className="cardBody">
-                        <p className="card-text">{this.props.descripcion}
-                        </p>
-                        <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ver más</Link>
+                <img
+                    src={"https://image.tmdb.org/t/p/w500/" + this.props.imagen}
+                    className="card-img-top"
+                    alt="..."
+                />
+                <div className="cardBody">
+                    <p className="card-text">{this.props.descripcion}</p>
+                    <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
 
-                        <button />
-                        
-                    </div>
-                </article>
+                    <button onClick={()=>this.agregarfav(this.props.id)} value={this.props.id}>♥️</button>
+
+                </div>
+            </article>
         )
     }
 }

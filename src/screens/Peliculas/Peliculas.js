@@ -1,9 +1,44 @@
 import React, { Component } from 'react'
+import Header from '../../components/Header/Header'
+import Busqueda from '../../components/Busqueda/Busqueda'
+import Card from '../../components/Crad/Card'
 
-export default class Peliculas extends Component {
+const API = "b4012469dde0367276c9701f8ecc44fe"
+class Peliculas extends Component {
+
+  constructor(props) {
+        super(props)
+        this.state = {
+            datos: []
+        };
+    }
+    componentDidMount() {
+        fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API)
+
+            .then(response => response.json())
+            .then(data => this.setState({ datos: data.results }))
+            .catch(error => console.log(error));
+    }
+
   render() {
     return (
-      <div>Peliculas</div>
+      <React.Fragment>
+        <Header/>
+        <h2 class="alert alert-primary">Todas las películas</h2>
+        <Busqueda/>
+        <section className="row cards" id="movies">
+          {this.state.datos.filter((pelicula, idx) => idx<8).map((pelicula) => (
+            <Card
+              titulo={pelicula.title}
+              id={pelicula.id}
+              imagen={pelicula.backdrop_path}
+              descripcion={pelicula.overview} />
+            ))}
+        </section>
+
+      </React.Fragment>
     )
   }
 }
+
+export default Peliculas
