@@ -12,15 +12,23 @@ class Busqueda extends Component {
     }
 
     controlarCambios(e){
-        this.setState({valor: e.target.value})
-        
+        this.setState({
+          valor: e.target.value
+        },      
+        ()=>console.log(this.state.valor),        
+    )}
+
+    componentDidMount(){
+      let valorBusqueda = this.state.valor;
+      let valor = JSON.stringify(valorBusqueda)
+      localStorage.setItem("Search", valor)
     }
 
   render() {
     return (
       <form onSubmit={(event)=>this.evitarBusqueda(event)} class="search-form"  method="get">
         <input type="text" onChange={(event)=>this.controlarCambios(event)} value={this.state.valor} name="searchData" placeholder="Buscar..."/>
-        <button type="submit" class="btn btn-success btn-sm">Buscar</button> 
+        <Link to='/Results' class="btn btn-success btn-sm"> <button type="submit" class="btn btn-success btn-sm">Buscar</button> </Link> 
       </form>
     )
   }
