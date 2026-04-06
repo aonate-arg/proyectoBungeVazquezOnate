@@ -21,7 +21,9 @@ class Card extends Component {
                         <p className="card-text">{this.props.descripcion}
                         </p>
                         <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ver más</Link>
-                        <a href="" className="btn alert-primary">♥️</a>
+
+
+                        <button />
                         
                     </div>
                 </article>
