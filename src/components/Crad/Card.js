@@ -5,27 +5,37 @@ class Card extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            estadoFavoritos : false
+            estadoFavoritos: false
         }
     }
 
     evitsubmin(event) {
         event.preventDefault()
     }
+
     agregarfav(id) {
         let storage = localStorage.getItem("Fav")
         let storageJson = JSON.parse(storage)
-            if (storageJson == null ){
-                let primerValor = [id]
-                let primerString = JSON.stringify(primerValor)
-                localStorage.setItem("Fav", primerString)
-            }
-            else{
-                storageJson.push(id)
-                let storageString = JSON.stringify(storageJson)
-                localStorage.setItem("Fav", storageString)
-            }
-            this.setState({estadoFavoritos : true})
+        if (storageJson == null) {
+            let primerValor = [id]
+            let primerString = JSON.stringify(primerValor)
+            localStorage.setItem("Fav", primerString)
+        }
+        else {
+            storageJson.push(id)
+            let storageString = JSON.stringify(storageJson)
+            localStorage.setItem("Fav", storageString)
+        }
+        this.setState({ estadoFavoritos: true, valor: "♥️" })
+    }
+
+    Eliminar(id) {
+        let listFav = localStorage.getItem("Fav")
+        let listFavJson = JSON.parse(listFav)
+        let nuevaListFav = listFavJson.filter((i)=> i !== id)
+
+        localStorage.setItem("Fav", nuevaListFav)
+        this.setState({valor: "🩶", estadoFavoritos: false})
     }
 
     render() {
@@ -43,7 +53,9 @@ class Card extends Component {
                     <Link to={`/Detalle/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
 
-                    <button onClick={()=>this.agregarfav(this.props.id)} value={this.props.id}>♥️</button>
+                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav() : this.Eliminar()} value={this.props.id}>
+                        {this.state.valor}
+                    </button>
 
                 </div>
             </article>
