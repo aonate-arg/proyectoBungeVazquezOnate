@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import Busqueda from '../../components/Busqueda/Busqueda'
-import Card from '../../components/Crad/Card'
+import Card from '../../components/Card/Card'
 
 const API = "b4012469dde0367276c9701f8ecc44fe"
 class Peliculas extends Component {

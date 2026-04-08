@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import Card from '../../components/Crad/Card';
+import Card from '../../components/Card/Card';
 import Peliculas from '../../components/Secciones/Peliculas';
 import Busqueda from '../../components/Busqueda/Busqueda';
 import Series from '../../components/Secciones/Series'

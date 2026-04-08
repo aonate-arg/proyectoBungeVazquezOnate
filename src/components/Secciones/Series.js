@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Card from "../Crad/Card";
+import Card from "../Card/Card";
 
 const API= "b4012469dde0367276c9701f8ecc44fe"
 class Series extends Component {

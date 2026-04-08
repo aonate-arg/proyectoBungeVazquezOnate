@@ -61,6 +61,8 @@ nav {
     width: 19%;
 }
 .single-card-movie {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     width: 24%;
 }
 .single-card-playing {
@@ -83,6 +85,9 @@ nav {
 #on-air-today .card-text{
     height: 100px;
     overflow: hidden;
+}
+.card-img-top{
+    width: 450px;
 }
 
 .all-movies .single-card-movie {

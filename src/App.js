@@ -9,7 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Detalle from "./screens/Detalles/DetallePeliculas";
 import Favoritos from './screens/Favoritos/Favoritos'
-import Card from "./components/Crad/Card";
+import Card from "./components/Card/Card";
 import Series from './screens/Series/Series'
 import Peliculas from './screens/Peliculas/Peliculas'
 
