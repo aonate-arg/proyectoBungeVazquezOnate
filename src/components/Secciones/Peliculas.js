@@ -24,7 +24,7 @@ class Peliculas extends Component {
                 <h2 className="alert alert-primary">Popular movies this week</h2>
                 <section className="row cards" id="movies">
                     {this.state.datos.filter((pelicula, idx) => idx<4).map((pelicula) => (
-                        <Card
+                        <Card type= "movie"
                             titulo={pelicula.title}
                             id={pelicula.id}
                             imagen={pelicula.backdrop_path}

@@ -28,7 +28,7 @@ class Peliculas extends Component {
         <Busqueda/>
         <section className="row cards" id="movies">
           {this.state.datos.filter((pelicula, idx) => idx<8).map((pelicula) => (
-            <Card
+            <Card type="movie"
               titulo={pelicula.title}
               id={pelicula.id}
               imagen={pelicula.backdrop_path}

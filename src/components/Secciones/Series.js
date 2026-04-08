@@ -21,7 +21,7 @@ class Series extends Component {
                 <h2 className="alert alert-primary">Series now playing</h2>
                 <section class="row cards" id="on-air-today">
                     {this.state.datos.filter((series, idx) => idx<4).map((series) => (
-                        <Card
+                        <Card type="serie"
                             titulo={series.name}
                             id={series.id}
                             imagen={series.backdrop_path}
@@ -34,6 +34,6 @@ class Series extends Component {
     }
     
   }
-
+/*Para diferenciar entre pelicula y serie en cada card que corresponde le agrego el tipo*/
 
 export default Series
