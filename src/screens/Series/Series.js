@@ -26,19 +26,23 @@ class Series extends Component {
       <React.Fragment>
         <Header/>
         <h2 class="alert alert-warning">Todas las series</h2>
-        <Busqueda/>
+        
+        {this.state.datos.length === 0?
+        <h3>Cargando...</h3>:
         <section className="row cards" id="series">
           {this.state.datos.filter((serie, idx) => idx<8).map((serie) => (
             <Card type="serie"
               titulo={serie.name}
               id={serie.id}
-              imagen={serie.backdrop_path}
+              imagen={serie.poster_path}
               descripcion={serie.overview} />
             ))}
-        </section>
+        </section>}
       </React.Fragment>
     )
   }
 }
 
 export default Series
+
+/*Agregar buscador con filter*/

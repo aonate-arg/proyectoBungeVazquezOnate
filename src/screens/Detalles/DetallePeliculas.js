@@ -33,7 +33,6 @@ class DetallePeliculas extends Component {
           <div>
             <h2 className="alert alert-primary">{this.state.datos.title}</h2>
             <section className="row">
-              <img src={`https://image.tmdb.org/t/p/w500${this.state.datos.poster_path}`} class="col-md-6" alt={this.state.title} />
               <section className="col-md-6 info">
                 <h3>Descripción</h3>
                 <p className="description">{this.state.datos.overview}</p>
@@ -43,6 +42,7 @@ class DetallePeliculas extends Component {
                 <ul className="mt-0 mb-0 length"><strong>Géneros:</strong> {this.state.datos.genres.map((genero,idx)=>
                 <li key={idx}> {genero.name}</li>)}</ul>
               </section>
+              <img src={`https://image.tmdb.org/t/p/w500${this.state.datos.poster_path}`} className="col-md-6" alt={this.state.title} />
             </section>
           </div>
           }

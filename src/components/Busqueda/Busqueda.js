@@ -18,7 +18,7 @@ class Busqueda extends Component {
         ()=>console.log(this.state.valor),        
     )}
 
-    componentDidMount(){
+    componentDidUpdate(){
       let valorBusqueda = this.state.valor;
       let valor = JSON.stringify(valorBusqueda)
       localStorage.setItem("Search", valor)

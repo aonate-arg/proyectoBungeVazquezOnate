@@ -59,8 +59,8 @@ class Card extends Component {
             <article className="single-card-movie">
                 <h5 className="card-title">{this.props.titulo}</h5>
 
-                <img
-                    src={"https://image.tmdb.org/t/p/w500/" + this.props.imagen}
+                <img 
+                    src={"https://image.tmdb.org/t/p/w342/" + this.props.imagen}
                     className="card-img-top"
                     alt="..."
                 />

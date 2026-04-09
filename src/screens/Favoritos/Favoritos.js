@@ -10,37 +10,53 @@ class Favoritos extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      datos: [], id: []
+      datos: [], 
+      info: [],
+
     }
   }
 
   componentDidMount() {
-    fetch(`https://api.themoviedb.org/3/movie/${this.state.id.map()}?api_key=`+API)
-      .then(response => response.json())
-      .then(data => this.setState({datos: data}))
-      .catch(error => console.log(error));
-  /*Agregar cargando antes de que lleguen los datos del fetch*/    
+    let listFav = localStorage.getItem("Fav")
+    console.log(listFav);
+    
+    
+    if (listFav !== null) {
+      let listFavJson = JSON.parse(listFav)
+      listFavJson.map((i) =>
+        fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=` + API)
+          .then(response => response.json())
+          .then(data => this.setState({ datos: this.state.info.push(data)}, console.log(this.state.datos))
+          .catch(error => console.log(error))
+      )
+      )}
+    /*Agregar cargando antes de que lleguen los datos del fetch*/
   }
 
   render() {
     return (
       <React.Fragment>
-        <Header />
-        <h2 className="alert alert-primary">Favoritos</h2>
-        <section className="row cards" id="movies">
-          {this.state.datos.map((pelicula) => (
-            <Card
-              titulo={pelicula.title}
-              id={pelicula.id}
-              imagen={pelicula.backdrop_path}
-              descripcion={pelicula.overview} />
+                
+                <h2 className="alert alert-primary">Popular movies this week</h2>
+                {this.state.datos.length === 0?
+                <h3>Cargando...</h3>:
+                <div>
+                
+                <section className="row cards" id="movies">
+                   
+                   {this.state.info.map((pelicula) => (
+                        <Card type= "movie"
+                            titulo={pelicula.title}
+                            id={pelicula.id}
+                            imagen={pelicula.poster_path}
+                            descripcion={pelicula.overview} />
 
-          ))}
-        </section>
-        <Footer />
-      </React.Fragment>
+                    ))}
+                </section></div>}
+            </React.Fragment>
     )
   }
 }
 
 export default Favoritos;
+

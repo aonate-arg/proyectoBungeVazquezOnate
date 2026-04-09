@@ -21,17 +21,23 @@ class Peliculas extends Component {
     render() {
         return (
             <React.Fragment>
+                
                 <h2 className="alert alert-primary">Popular movies this week</h2>
+                {this.state.datos.length === 0?
+                <h3>Cargando...</h3>:
+                <div>
+                
                 <section className="row cards" id="movies">
-                    {this.state.datos.filter((pelicula, idx) => idx<4).map((pelicula) => (
+                   
+                   {this.state.datos.filter((pelicula, idx) => idx<4).map((pelicula) => (
                         <Card type= "movie"
                             titulo={pelicula.title}
                             id={pelicula.id}
-                            imagen={pelicula.backdrop_path}
+                            imagen={pelicula.poster_path}
                             descripcion={pelicula.overview} />
 
                     ))}
-                </section>
+                </section></div>}
             </React.Fragment>
         )
     }
