@@ -24,17 +24,22 @@ class Peliculas extends Component {
     return (
       <React.Fragment>
         <Header/>
-        <h2 class="alert alert-primary">Todas las películas</h2>
-        <Busqueda/>
+        <h2 className="alert alert-primary">Todas las películas</h2>
+        
+        {this.state.datos.length === 0?
+        <h3>Cargando...</h3>:
+        <div>
+        
         <section className="row cards" id="movies">
+          
           {this.state.datos.filter((pelicula, idx) => idx<8).map((pelicula) => (
             <Card type="movie"
               titulo={pelicula.title}
               id={pelicula.id}
-              imagen={pelicula.backdrop_path}
+              imagen={pelicula.poster_path}
               descripcion={pelicula.overview} />
             ))}
-        </section>
+        </section></div>} 
 
       </React.Fragment>
     )
@@ -42,3 +47,6 @@ class Peliculas extends Component {
 }
 
 export default Peliculas
+
+/*Agregar buscador con filter*/
+/*agregar boton entre div y section(<button className="btn btn-info">Cargar más</button>)*/

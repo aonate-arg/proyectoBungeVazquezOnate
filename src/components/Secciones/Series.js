@@ -19,16 +19,18 @@ class Series extends Component {
     return (
             <React.Fragment>
                 <h2 className="alert alert-primary">Series now playing</h2>
+                {this.state.datos.length === 0?
+                <h3>Cargando...</h3>:
                 <section class="row cards" id="on-air-today">
                     {this.state.datos.filter((series, idx) => idx<4).map((series) => (
                         <Card type="serie"
                             titulo={series.name}
                             id={series.id}
-                            imagen={series.backdrop_path}
+                            imagen={series.poster_path}
                             descripcion={series.overview} />
 
                     ))}
-                </section>
+                </section>}
             </React.Fragment>
         )
     }
