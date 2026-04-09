@@ -15,22 +15,11 @@ class Favoritos extends Component {
   }
 
   componentDidMount() {
-    this.obtenerId()
-
-    fetch('​​https://api.themoviedb.org/3/search/multi?api_key=' + API)
+    fetch(`https://api.themoviedb.org/3/movie/${this.state.id.map()}?api_key=`+API)
       .then(response => response.json())
-      .then(data => this.setState(
-        { datos: data.results },
-        () => this.state.datos.map())
-      )
+      .then(data => this.setState({datos: data}))
       .catch(error => console.log(error));
-  }
-
-  obtenerId() {
-    let listFav = localStorage.getItem("Fav")
-    let listFavJson = JSON.parse(listFav)
-    console.log(listFavJson)
-    this.setState({ id: listFavJson })
+  /*Agregar cargando antes de que lleguen los datos del fetch*/    
   }
 
   render() {
@@ -39,7 +28,7 @@ class Favoritos extends Component {
         <Header />
         <h2 className="alert alert-primary">Favoritos</h2>
         <section className="row cards" id="movies">
-          {this.state.datos.filter((pelicula, idx) => idx < 4).map((pelicula) => (
+          {this.state.datos.map((pelicula) => (
             <Card
               titulo={pelicula.title}
               id={pelicula.id}
