@@ -14,44 +14,59 @@ class Favoritos extends Component {
     }
   }
 
-  agregarDatos(data){
-      let nuevoArray= this.state.tdslosdatos
-      nuevoArray.push(data)
-      this.setState({tdslosdatos: nuevoArray})
+  agregarDatos(data) {
+    let nuevoArray = this.state.tdslosdatos
+    nuevoArray.push(data)
+    this.setState({ tdslosdatos: nuevoArray })
   }
   componentDidMount() {
     let listFav = localStorage.getItem("Fav")
     console.log(listFav);
-      let listFavJson = JSON.parse(listFav)
-      listFavJson.map((i) =>
-        fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=` + API)
-          .then(response => response.json())
-          .then(data => this.agregarDatos(data))
-          .catch(error => console.log(error))
-      ) 
+    let listFavJson = JSON.parse(listFav)
+    listFavJson.map((i) =>
+      fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=` + API)
+        .then(response => response.json())
+        .then(data => this.agregarDatos(data))
+        .catch(error => console.log(error))
+    )
   }
 
 
   render() {
     return (
       <React.Fragment>
-                <Header/>
-                <h2 className="alert alert-primary">Popular movies this week</h2>
-               
-                <div>
-                
-                <section className="row cards" id="movies">
-                   
-                   {this.state.tdslosdatos.map((pelicula) => (
-                        <Card type= "movie"
-                            titulo={pelicula.title}
-                            id={pelicula.id}
-                            imagen={pelicula.poster_path}
-                            descripcion={pelicula.overview} />
+        <Header />
 
-                    ))}
-                </section></div>
-            </React.Fragment>
+        <h2 className="alert alert-primary">Peliculas Favoritas</h2>
+        <div>
+          <section className="row cards" id="movies">
+            {this.state.tdslosdatos.map((pelicula) => (
+              <Card type="movie"
+                titulo={pelicula.title}
+                id={pelicula.id}
+                imagen={pelicula.poster_path}
+                descripcion={pelicula.overview}
+              />
+            ))}
+          </section>
+        </div>
+
+        <h2 className="alert alert-primary">Series Favoritas</h2>
+        <div>
+          <section className="row cards" id="movies">
+            {this.state.tdslosdatos.map((serie) => (
+              <Card type="movie"
+                titulo={serie.title}
+                id={serie.id}
+                imagen={serie.poster_path}
+                descripcion={serie.overview}
+              />
+            ))}
+          </section>
+        </div>
+
+        <Footer />
+      </React.Fragment>
     )
   }
 }

@@ -6,6 +6,7 @@ class Card extends Component {
         super(props)
         this.state = {
             estadoFavoritos: false,
+            pelicula: true, 
             valor: "🩶"
         }
     }
@@ -24,11 +25,7 @@ class Card extends Component {
     evitsubmin(event) {
         event.preventDefault()
     }
-    /*
-    Ya esta funcionando, guarda el favorito y lo puede eliminar. Ya no se guarda infinitas veces tampoco. Lo unico que tengo que arreglar es 
-    como hacer para que cuando se recargue la pagina el valor del corazon sea el mismo que el de local storage. Me refiero a que si esta 
-    marcada como favorita la pelicula continue asi aunque se recargue.
-    */
+
     agregarfav(id) {
         let storage = localStorage.getItem("Fav")
         let storageJson = JSON.parse(storage)
@@ -72,6 +69,7 @@ class Card extends Component {
                     <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id) : this.Eliminar(this.props.id)} value={this.props.id}>
                         {this.state.valor}
                     </button>
+                    {{()=> ${this.props.class} == false ? this.setState(pelicula: false)}}
 
                 </div>
             </article>
