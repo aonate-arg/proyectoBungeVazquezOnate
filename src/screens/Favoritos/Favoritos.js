@@ -7,44 +7,42 @@ import Series from '../Series/Series'
 
 const API = "b4012469dde0367276c9701f8ecc44fe"
 class Favoritos extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      datos: [], 
-      info: [],
-
+      tdslosdatos: [],
     }
   }
 
+  agregarDatos(data){
+      let nuevoArray= this.state.tdslosdatos
+      nuevoArray.push(data)
+      this.setState({tdslosdatos: nuevoArray})
+  }
   componentDidMount() {
     let listFav = localStorage.getItem("Fav")
     console.log(listFav);
-    
-    
-    if (listFav !== null) {
       let listFavJson = JSON.parse(listFav)
       listFavJson.map((i) =>
         fetch(`https://api.themoviedb.org/3/movie/${i}?api_key=` + API)
           .then(response => response.json())
-          .then(data => this.setState({ datos: this.state.info.push(data)}, console.log(this.state.datos))
+          .then(data => this.agregarDatos(data))
           .catch(error => console.log(error))
-      )
-      )}
-    /*Agregar cargando antes de que lleguen los datos del fetch*/
+      ) 
   }
+
 
   render() {
     return (
       <React.Fragment>
                 
                 <h2 className="alert alert-primary">Popular movies this week</h2>
-                {this.state.datos.length === 0?
-                <h3>Cargando...</h3>:
+               
                 <div>
                 
                 <section className="row cards" id="movies">
                    
-                   {this.state.info.map((pelicula) => (
+                   {this.state.tdslosdatos.map((pelicula) => (
                         <Card type= "movie"
                             titulo={pelicula.title}
                             id={pelicula.id}
@@ -52,7 +50,7 @@ class Favoritos extends Component {
                             descripcion={pelicula.overview} />
 
                     ))}
-                </section></div>}
+                </section></div>
             </React.Fragment>
     )
   }
@@ -60,3 +58,6 @@ class Favoritos extends Component {
 
 export default Favoritos;
 
+/*Ver si esta bien hecho, se me ocurrió crear el método agregarDatos para ir 
+actualizando el array del estado, y usarlo en el then de cd iteración del map*/
+/*Falta hacer una sección para series y otra para peliculas, usar el atributo type*/
