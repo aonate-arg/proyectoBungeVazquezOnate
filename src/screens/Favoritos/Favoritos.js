@@ -35,7 +35,7 @@ class Favoritos extends Component {
   render() {
     return (
       <React.Fragment>
-                
+                <Header/>
                 <h2 className="alert alert-primary">Popular movies this week</h2>
                
                 <div>

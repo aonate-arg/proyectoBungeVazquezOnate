@@ -6,7 +6,8 @@ class Peliculas extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            datos: []
+            datos: [],
+            peliBuscada: []
         };
     }
     componentDidMount() {
@@ -17,17 +18,31 @@ class Peliculas extends Component {
             .catch(error => console.log(error));
     }
 
-    /*Agregar cargando y ver si esta bien primero filter y despues map*/
+    guardarCambios(event){
+        this.setState({peliBuscada: event.target.value})
+    }
+
+    filtrarPeliculas(event){
+        event.preventDefault()
+        this.setState({datos: this.state.datos.filter((pelicula) => {
+        return pelicula.title == this.state.peliBuscada}) 
+        })
+    }
+    /*comparar cada letra del titulo que buscas. También hace que si no coincide ninguno mostrar otro mensaje, no el cargando*/
+    
     render() {
         return (
             <React.Fragment>
-                
                 <h2 className="alert alert-primary">Popular movies this week</h2>
                 {this.state.datos.length === 0?
                 <h3>Cargando...</h3>:
                 <div>
-                
+                 <form onSubmit={(event)=>this.filtrarPeliculas(event)}>
+                    <input type="text" onChange={(event)=>this.guardarCambios(event)} value={this.state.peliBuscada}></input>
+                    <input type="submit" value="Submit"></input>
+                </form>
                 <section className="row cards" id="movies">
+               
                    
                    {this.state.datos.filter((pelicula, idx) => idx<4).map((pelicula) => (
                         <Card type= "movie"
@@ -45,7 +60,8 @@ class Peliculas extends Component {
 
 
 export default Peliculas
-
+/*el buscador de filter tiene que ser un componente o aca adentro esta bien?*/
+/*Agregar cargando y ver si esta bien primero filter y despues map*/
 /*{this.state.datos.map((pelicula, idx) => (
                         <Card
                             titulo={pelicula.title}
