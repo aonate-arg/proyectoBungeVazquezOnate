@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import {Link} from 'react-router-dom';
+import Footer from '../../components/Footer/Footer'
 
 
 const API = "b4012469dde0367276c9701f8ecc44fe"
@@ -9,7 +10,7 @@ class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-         
+            valor: ''
         };
     }
    
@@ -41,6 +42,7 @@ class Login extends Component {
                     </div>
                 </div>
 
+                <Footer/>
             </React.Fragment>
         )
     }
