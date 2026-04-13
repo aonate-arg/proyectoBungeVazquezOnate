@@ -20,6 +20,9 @@ class Card extends Component {
                 this.setState({ estadoFavoritos: true, valor: "♥️" })
             }
         }
+        if (this.state.pelicula == false){
+            this.setState({pelicula : true})
+        }
     }
 
     evitsubmin(event) {
@@ -69,7 +72,6 @@ class Card extends Component {
                     <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id) : this.Eliminar(this.props.id)} value={this.props.id}>
                         {this.state.valor}
                     </button>
-                    {{()=> ${this.props.class} == false ? this.setState(pelicula: false)}}
 
                 </div>
             </article>
