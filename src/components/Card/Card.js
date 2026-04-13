@@ -6,7 +6,9 @@ class Card extends Component {
         super(props)
         this.state = {
             estadoFavoritos: false,
-            valor: "🩶"
+            pelicula: true, 
+            valor: "🩶",
+            verMas: true,
         }
     }
     componentDidMount() {
@@ -24,11 +26,7 @@ class Card extends Component {
     evitsubmin(event) {
         event.preventDefault()
     }
-    /*
-    Ya esta funcionando, guarda el favorito y lo puede eliminar. Ya no se guarda infinitas veces tampoco. Lo unico que tengo que arreglar es 
-    como hacer para que cuando se recargue la pagina el valor del corazon sea el mismo que el de local storage. Me refiero a que si esta 
-    marcada como favorita la pelicula continue asi aunque se recargue.
-    */
+
     agregarfav(id) {
         let storage = localStorage.getItem("Fav")
         let storageJson = JSON.parse(storage)
@@ -54,6 +52,18 @@ class Card extends Component {
         this.setState({ valor: "🩶", estadoFavoritos: false })
     }
 
+    MostrarMas(){
+        this.setState({
+            verMas: true
+        })
+    }
+
+    MostrarMenos(){
+        this.setState({
+            verMas: false
+        })
+    }
+
     render() {
         return (
             <article className="single-card-movie">
@@ -65,13 +75,15 @@ class Card extends Component {
                     alt="..."
                 />
                 <div className="cardBody">
-                    <p className="card-text">{this.props.descripcion}</p>
+                    <button onClick={()=>this.state.verMas? this.MostrarMenos(): this.MostrarMas()}>{this.state.verMas==true? "Mostrar descripción": "Ocultar descripción"}</button>
+                    <p className={this.state.verMas? "card-text-hide": "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type=="movie"? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
 
                     <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id) : this.Eliminar(this.props.id)} value={this.props.id}>
                         {this.state.valor}
                     </button>
+                    
 
                 </div>
             </article>
