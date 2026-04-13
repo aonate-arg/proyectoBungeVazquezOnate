@@ -6,7 +6,6 @@ class Card extends Component {
         super(props)
         this.state = {
             estadoFavoritos: false,
-            pelicula: true, 
             valor: "🩶",
             verMas: true,
         }
@@ -17,12 +16,10 @@ class Card extends Component {
 
         if (storageJson !== null) {
             let esFavorito = storageJson.filter(id => id === this.props.id).length > 0
+            /*ver que valor esta tomando esFavorito, debe ser un bool true si esta marcado como favorito y false si no.*/
             if (esFavorito) {
                 this.setState({ estadoFavoritos: true, valor: "♥️" })
             }
-        }
-        if (this.state.pelicula == false){
-            this.setState({pelicula : true})
         }
     }
 
@@ -51,7 +48,7 @@ class Card extends Component {
         let listFavJson = JSON.parse(listFav)
         let nuevaListFav = listFavJson.filter((i) => i !== id)
         let newListFavJson = JSON.stringify(nuevaListFav)
-        localStorage.setItem(tipo, newListFavJson)
+        localStorage.removeItem(tipo, newListFavJson)
         this.setState({ valor: "🩶", estadoFavoritos: false })
     }
 
