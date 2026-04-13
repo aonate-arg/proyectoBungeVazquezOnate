@@ -11,8 +11,8 @@ class Card extends Component {
             verMas: true,
         }
     }
-    componentDidMount() {
-        let storage = localStorage.getItem("Fav")
+    componentDidMount(tipo) {
+        let storage = localStorage.getItem(tipo)
         let storageJson = JSON.parse(storage)
 
         if (storageJson !== null) {
@@ -21,34 +21,37 @@ class Card extends Component {
                 this.setState({ estadoFavoritos: true, valor: "♥️" })
             }
         }
+        if (this.state.pelicula == false){
+            this.setState({pelicula : true})
+        }
     }
 
     evitsubmin(event) {
         event.preventDefault()
     }
 
-    agregarfav(id) {
-        let storage = localStorage.getItem("Fav")
+    agregarfav(id, tipo) {      
+        let storage = localStorage.getItem(tipo)
         let storageJson = JSON.parse(storage)
         if (storageJson == null) {
             let primerValor = [id]
             let primerString = JSON.stringify(primerValor)
-            localStorage.setItem("Fav", primerString)
+            localStorage.setItem(tipo, primerString)
         }
         else {
             storageJson.push(id)
             let storageString = JSON.stringify(storageJson)
-            localStorage.setItem("Fav", storageString)
+            localStorage.setItem(tipo, storageString)
         }
         this.setState({ estadoFavoritos: true, valor: "♥️" })
     }
 
-    Eliminar(id) {
-        let listFav = localStorage.getItem("Fav")
+    Eliminar(id, tipo) {
+        let listFav = localStorage.getItem(tipo)
         let listFavJson = JSON.parse(listFav)
         let nuevaListFav = listFavJson.filter((i) => i !== id)
         let newListFavJson = JSON.stringify(nuevaListFav)
-        localStorage.setItem("Fav", newListFavJson)
+        localStorage.setItem(tipo, newListFavJson)
         this.setState({ valor: "🩶", estadoFavoritos: false })
     }
 
@@ -74,16 +77,14 @@ class Card extends Component {
                     className="card-img-top"
                     alt="..."
                 />
-                <div className="cardBody">
+                <div className="cardBody" >
                     <button onClick={()=>this.state.verMas? this.MostrarMenos(): this.MostrarMas()}>{this.state.verMas==true? "Mostrar descripción": "Ocultar descripción"}</button>
                     <p className={this.state.verMas? "card-text-hide": "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type=="movie"? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
-
-                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id) : this.Eliminar(this.props.id)} value={this.props.id}>
+                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id}>
                         {this.state.valor}
                     </button>
-                    
 
                 </div>
             </article>
