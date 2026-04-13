@@ -20,6 +20,7 @@ class Favoritos extends Component {
     this.setState({ tdslosdatos: nuevoArray })
   }
   componentDidMount() {
+    
     let listFav = localStorage.getItem("Fav")
     console.log(listFav);
     let listFavJson = JSON.parse(listFav)
@@ -30,7 +31,6 @@ class Favoritos extends Component {
         .catch(error => console.log(error))
     )
   }
-
 
   render() {
     return (

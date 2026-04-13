@@ -46,8 +46,8 @@ class Card extends Component {
         this.setState({ estadoFavoritos: true, valor: "♥️" })
     }
 
-    Eliminar(id) {
-        let listFav = localStorage.getItem("Fav")
+    Eliminar(id, tipo) {
+        let listFav = localStorage.getItem(tipo)
         let listFavJson = JSON.parse(listFav)
         let nuevaListFav = listFavJson.filter((i) => i !== id)
         let newListFavJson = JSON.stringify(nuevaListFav)
@@ -82,8 +82,7 @@ class Card extends Component {
                     <p className={this.state.verMas? "card-text-hide": "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type=="movie"? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
-
-                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id) : this.Eliminar(this.props.id)} value={this.props.id}>
+                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id}>
                         {this.state.valor}
                     </button>
 
