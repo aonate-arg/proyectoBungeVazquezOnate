@@ -7,7 +7,8 @@ class Card extends Component {
         this.state = {
             estadoFavoritos: false,
             pelicula: true, 
-            valor: "🩶"
+            valor: "🩶",
+            verMas: true,
         }
     }
     componentDidMount() {
@@ -51,6 +52,18 @@ class Card extends Component {
         this.setState({ valor: "🩶", estadoFavoritos: false })
     }
 
+    MostrarMas(){
+        this.setState({
+            verMas: true
+        })
+    }
+
+    MostrarMenos(){
+        this.setState({
+            verMas: false
+        })
+    }
+
     render() {
         return (
             <article className="single-card-movie">
@@ -62,7 +75,8 @@ class Card extends Component {
                     alt="..."
                 />
                 <div className="cardBody">
-                    <p className="card-text">{this.props.descripcion}</p>
+                    <button onClick={()=>this.state.verMas? this.MostrarMenos(): this.MostrarMas()}>{this.state.verMas==true? "Mostrar descripción": "Ocultar descripción"}</button>
+                    <p className={this.state.verMas? "card-text-hide": "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type=="movie"? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
 
