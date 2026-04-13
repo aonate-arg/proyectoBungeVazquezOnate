@@ -15,11 +15,9 @@ class Results extends Component {
   componentDidMount(){
     const busqueda = this.props.match.params.id
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API)
-
             .then(response => response.json())
             .then(data => this.setState({ datos: data.results }))
             .catch(error => console.log(error));
-    
       console.log(busqueda); 
     }
 
@@ -27,6 +25,7 @@ class Results extends Component {
     return (
       <React.Fragment>
         <Header/>
+        
         <Footer/>
       </React.Fragment>
     )

@@ -30,18 +30,18 @@ class Card extends Component {
         event.preventDefault()
     }
 
-    agregarfav(id) {
-        let storage = localStorage.getItem("Fav")
+    agregarFavMovies(id) {      
+        let storage = localStorage.getItem("FavMovies")
         let storageJson = JSON.parse(storage)
         if (storageJson == null) {
             let primerValor = [id]
             let primerString = JSON.stringify(primerValor)
-            localStorage.setItem("Fav", primerString)
+            localStorage.setItem("FavMovies", primerString)
         }
         else {
             storageJson.push(id)
             let storageString = JSON.stringify(storageJson)
-            localStorage.setItem("Fav", storageString)
+            localStorage.setItem("FavMovies", storageString)
         }
         this.setState({ estadoFavoritos: true, valor: "♥️" })
     }

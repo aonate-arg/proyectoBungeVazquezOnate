@@ -16,7 +16,7 @@ class Peliculas extends Component {
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API)
 
       .then(response => response.json())
-      .then(data => this.setState({ datos: data.results },     console.log(data)))
+      .then(data => this.setState({ datos: data.results },console.log(data)))
       .catch(error => console.log(error));
   }
   guardarCambios(event){
