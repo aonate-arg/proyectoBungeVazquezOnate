@@ -9,6 +9,7 @@ class Busqueda extends Component {
 
     evitarBusqueda(e){
         e.preventDefault();
+        this.props.history.push('/Results/' + this.state.valor)
     }
 
     controlarCambios(e){
@@ -18,17 +19,11 @@ class Busqueda extends Component {
         ()=>console.log(this.state.valor),        
     )}
 
-    componentDidUpdate(){
-      let valorBusqueda = this.state.valor;
-      let valor = JSON.stringify(valorBusqueda)
-      localStorage.setItem("Search", valor)
-    }
-
   render() {
     return (
       <form onSubmit={(event)=>this.evitarBusqueda(event)} class="search-form"  method="get">
         <input type="text" onChange={(event)=>this.controlarCambios(event)} value={this.state.valor} name="searchData" placeholder="Buscar..."/>
-        <Link to='/Results' class="btn btn-success btn-sm"> <button type="submit" class="btn btn-success btn-sm">Buscar</button> </Link> 
+        <button type="submit" class="btn btn-success btn-sm">Buscar</button> 
       </form>
     )
   }

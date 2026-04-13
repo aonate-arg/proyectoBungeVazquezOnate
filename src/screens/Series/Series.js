@@ -20,6 +20,10 @@ class Series extends Component {
             .catch(error => console.log(error));
     }
     
+    cargarMas(event){
+      
+
+    }
     
   render() {
     return (
@@ -38,6 +42,7 @@ class Series extends Component {
               descripcion={serie.overview} />
             ))}
         </section>}
+        <button onClick={()=>this.cargarMas()} class="btn btn-warning">Cargar más</button>
       </React.Fragment>
     )
   }
