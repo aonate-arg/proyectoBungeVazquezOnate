@@ -1,7 +1,7 @@
 import React from "react";
 import {Switch, Route} from 'react-router-dom';
 import Home from './screens/Home/Home';
-import Login from './screens/Login/Login';
+
 import Notfound from './screens/Notfound/Notfound';
 import Register from './screens/Register/Register';
 import Results from './screens/Results/Results';
@@ -13,6 +13,7 @@ import Favoritos from './screens/Favoritos/Favoritos'
 import Card from "./components/Card/Card";
 import Series from './screens/Series/Series'
 import Peliculas from './screens/Peliculas/Peliculas'
+import Login from './screens/Login/Login'
 
 function App() {
   return (
@@ -24,7 +25,6 @@ function App() {
       <Route path="/Results" component={Results}/>
       <Route path="/DetallePeliculas/:id" component={DetallePeliculas}/>
       <Route path="/DetalleSeries/:id" component={DetalleSeries}/>
-
       <Route path="/Favoritos" component={Favoritos}/>
       <Route path="/Series" component={Series}/>
       <Route path="/Peliculas" component={Peliculas}/>
