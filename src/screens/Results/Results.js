@@ -27,6 +27,7 @@ class Results extends Component {
     return (
       <React.Fragment>
         <Header/>
+      
         <Footer/>
       </React.Fragment>
     )
