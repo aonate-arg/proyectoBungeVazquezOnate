@@ -32,14 +32,19 @@ class FavMovies extends Component {
       <React.Fragment>
         <h2 className="alert alert-primary">Peliculas Favoritas</h2>
         <div>
-          <section className="row cards" id="movies">
-            {this.state.tdslosdatos.map((pelicula) => (
-              <Card type="movie"
-                titulo={pelicula.title}
-                id={pelicula.id}
-                imagen={pelicula.poster_path}
-                descripcion={pelicula.overview}
-              />
+          <section className="row cards" id="movie">
+            {this.state.tdslosdatos.length === 0 ? 
+            
+            <p>No hay peliculas favoritas guardadas</p> :
+
+             this.state.tdslosdatos.map((peliculas) => (
+                <Card
+                  type="movie"
+                  titulo={peliculas.name}
+                  id={peliculas.id}
+                  imagen={peliculas.poster_path}
+                  descripcion={peliculas.overview}
+                />
             ))}
           </section>
         </div>
