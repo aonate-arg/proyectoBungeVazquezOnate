@@ -10,13 +10,14 @@ class Card extends Component {
             verMas: true,
         }
     }
-    componentDidMount(tipo) {
+    
+    componentDidMount() {
+        let tipo = this.props.type
         let storage = localStorage.getItem(tipo)
         let storageJson = JSON.parse(storage)
 
         if (storageJson !== null) {
             let esFavorito = storageJson.filter(id => id === this.props.id).length > 0
-            /*ver que valor esta tomando esFavorito, debe ser un bool true si esta marcado como favorito y false si no.*/
             if (esFavorito) {
                 this.setState({ estadoFavoritos: true, valor: "♥️" })
             }
@@ -27,7 +28,7 @@ class Card extends Component {
         event.preventDefault()
     }
 
-    agregarfav(id, tipo) {      
+    agregarfav(id, tipo) {
         let storage = localStorage.getItem(tipo)
         let storageJson = JSON.parse(storage)
         if (storageJson == null) {
@@ -48,17 +49,17 @@ class Card extends Component {
         let listFavJson = JSON.parse(listFav)
         let nuevaListFav = listFavJson.filter((i) => i !== id)
         let newListFavJson = JSON.stringify(nuevaListFav)
-        localStorage.removeItem(tipo, newListFavJson)
+        localStorage.setItem(tipo, newListFavJson)
         this.setState({ valor: "🩶", estadoFavoritos: false })
     }
 
-    MostrarMas(){
+    MostrarMas() {
         this.setState({
             verMas: true
         })
     }
 
-    MostrarMenos(){
+    MostrarMenos() {
         this.setState({
             verMas: false
         })
@@ -69,15 +70,15 @@ class Card extends Component {
             <article className="single-card-movie">
                 <h5 className="card-title">{this.props.titulo}</h5>
 
-                <img 
+                <img
                     src={"https://image.tmdb.org/t/p/w342/" + this.props.imagen}
                     className="card-img-top"
                     alt="..."
                 />
                 <div className="cardBody" >
-                    <button onClick={()=>this.state.verMas? this.MostrarMenos(): this.MostrarMas()}>{this.state.verMas==true? "Mostrar descripción": "Ocultar descripción"}</button>
-                    <p className={this.state.verMas? "card-text-hide": "card-text-show"}>{this.props.descripcion}</p>
-                    <Link to={this.props.type=="movie"? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
+                    <button onClick={() => this.state.verMas ? this.MostrarMenos() : this.MostrarMas()}>{this.state.verMas == true ? "Mostrar descripción" : "Ocultar descripción"}</button>
+                    <p className={this.state.verMas ? "card-text-hide" : "card-text-show"}>{this.props.descripcion}</p>
+                    <Link to={this.props.type == "movie" ? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
                     <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id}>
                         {this.state.valor}

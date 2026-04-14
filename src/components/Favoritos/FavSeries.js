@@ -33,13 +33,18 @@ class FavSeries extends Component {
         <h2 className="alert alert-primary">Series Favoritas</h2>
         <div>
           <section className="row cards" id="serie">
-            {this.state.tdslosdatos.map((series) => (
-              <Card type="movie"
-                titulo={series.title}
-                id={series.id}
-                imagen={series.poster_path}
-                descripcion={series.overview}
-              />
+            {this.state.tdslosdatos.length === 0 ? 
+            
+            <p>No hay series favoritas guardadas</p> :
+
+             this.state.tdslosdatos.map((series) => (
+                <Card
+                  type="serie"
+                  titulo={series.name}
+                  id={series.id}
+                  imagen={series.poster_path}
+                  descripcion={series.overview}
+                />
             ))}
           </section>
         </div>
