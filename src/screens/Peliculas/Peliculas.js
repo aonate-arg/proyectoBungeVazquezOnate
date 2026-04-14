@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import Header from '../../components/Header/Header'
-import Busqueda from '../../components/Busqueda/Busqueda'
+import BuscadorFiltro from '../../components/BuscadorFiltro/BuscadorFiltro'
 import Card from '../../components/Card/Card'
+import Header from '../../components/Header/Header'
+
 
 const API = "b4012469dde0367276c9701f8ecc44fe"
 class Peliculas extends Component {
@@ -9,24 +10,32 @@ class Peliculas extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      datos: []
+      datos: [],
+      pag: 1
+      
     };
   }
   componentDidMount() {
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API)
 
       .then(response => response.json())
-      .then(data => this.setState({ datos: data.results },console.log(data)))
+      .then(data => this.setState({ datos: data.results, backup: data.results },console.log(data)))
       .catch(error => console.log(error));
   }
-  guardarCambios(event){
-        this.setState({peliBuscada: event.target.value})
-    }
+ 
+  cargarMas = ()=> {
+    let newpag = this.state.pag + 1
+    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + API + `&page=${newpag}`)
+      .then(response => response.json())
+      .then(data => this.setState({ datos: this.state.datos.concat(data.results), backup: this.state.datos.concat(data.results), pag: newpag },console.log(data)))
+      .catch(error => console.log(error));
 
-    filtrarPeliculas(event){
-        event.preventDefault()
-        this.setState({datos: this.state.datos.filter((pelicula) => {
-        return pelicula.title == this.state.peliBuscada}) 
+  }
+
+    filtrarPeliculas(Pelicula){
+        const peliculas = this.state.backup.filter((i)=> i.title.toLowerCase().includes(Pelicula.toLowerCase()))
+        this.setState({
+          datos: peliculas
         })
     }
     /*comparar cada letra del titulo que buscas. También hace que si no coincide ninguno mostrar otro mensaje, no el cargando/ esto tendria que ser un componente?*/
@@ -40,12 +49,9 @@ class Peliculas extends Component {
         {this.state.datos.length === 0 ?
           <h3>Cargando...</h3> :
           <div>
-              <form onSubmit={(event)=>this.filtrarPeliculas(event)} class="search-form"  method="get">
-                    <input type="text" onChange={(event)=>this.guardarCambios(event)} value={this.state.peliBuscada}></input>
-                    <button type="submit" class="btn btn-success btn-sm">Buscar</button>
-                </form>
+            <BuscadorFiltro filtrar={(input)=> this.filtrarPeliculas(input)}/>  
             <section className="row cards" id="movies">
-              {this.state.datos.filter((pelicula, idx) => idx < 8).map((pelicula) => (
+              {this.state.datos.map((pelicula) => (
                 <Card type="movie"
                   titulo={pelicula.title}
                   id={pelicula.id}
@@ -53,6 +59,7 @@ class Peliculas extends Component {
                   descripcion={pelicula.overview} />
               ))}
             </section>
+            <button onClick={this.cargarMas}>Cargar más</button>
           </div>}
 
       </React.Fragment>
@@ -63,4 +70,3 @@ class Peliculas extends Component {
 export default Peliculas
 
 /*Agregar buscador con filter*/
-/*agregar boton entre div y section(<button className="btn btn-info">Cargar más</button>)*/

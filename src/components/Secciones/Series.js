@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
 const API= "b4012469dde0367276c9701f8ecc44fe"
@@ -29,7 +30,7 @@ class Series extends Component {
                             imagen={series.poster_path}
                             descripcion={series.overview} />
 
-                    ))}
+                    ))}<Link to="/Series">Ver todas las series</Link>
                 </section>}
             </React.Fragment>
         )
