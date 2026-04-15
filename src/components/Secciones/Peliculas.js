@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
 const API = "b4012469dde0367276c9701f8ecc44fe"
@@ -25,7 +26,7 @@ class Peliculas extends Component {
                 <h2 className="alert alert-primary">Popular movies this week</h2>
                 {this.state.datos.length === 0?
                 <h3>Cargando...</h3>:
-                <div>
+                
                
                 <section className="row cards" id="movies">
                
@@ -37,8 +38,9 @@ class Peliculas extends Component {
                             imagen={pelicula.poster_path}
                             descripcion={pelicula.overview} />
 
-                    ))}
-                </section></div>}
+                    ))}<Link to="/Peliculas">Ver todas las peliculas</Link>
+                </section>
+                }
             </React.Fragment>
         )
     }

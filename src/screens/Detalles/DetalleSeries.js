@@ -8,7 +8,7 @@ class DetalleSeries extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      datos: [],
+      datos: null,
       
     };
   }
@@ -29,7 +29,7 @@ class DetalleSeries extends Component {
       <React.Fragment>
         <Header />
 
-        {this.state.datos.length === 0?
+        {this.state.datos== null?
         <h3>Cargando...</h3>:
         <div>
             <h2 className="alert alert-warning">{this.state.datos.original_name}</h2>
@@ -41,8 +41,7 @@ class DetalleSeries extends Component {
                 <p className="mt-0 mb-0" id="release-date"><strong>Fecha de estreno:</strong> {this.state.datos.first_air_date}</p>
                 
                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.datos.vote_average}</p>
-                <ul className="mt-0 mb-0 length"><strong>Géneros:</strong> {this.state.datos.genres.map((genero,idx)=>
-                <li key={idx}> {genero.name}</li>)}</ul>
+                
               </section>
                <img src={`https://image.tmdb.org/t/p/w500${this.state.datos.poster_path}`} className="col-md-6" alt={this.state.datos.title} />
               </section>
