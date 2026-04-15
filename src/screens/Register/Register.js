@@ -84,4 +84,3 @@ render() {
 
 
 export default Register
-
