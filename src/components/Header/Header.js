@@ -1,7 +1,11 @@
 import react from 'react'
 import {Link} from 'react-router-dom';
+import Cookies from 'universal-cookie'
 
+const cookies = new Cookies()
 function Header() {
+    
+
     return(
         <nav>
             <ul class="nav nav-tabs my-4">
