@@ -24,9 +24,6 @@ class Card extends Component {
         }
     }
 
-    evitsubmin(event) {
-        event.preventDefault()
-    }
 
     agregarfav(id, tipo) {
         let storage = localStorage.getItem(tipo)
