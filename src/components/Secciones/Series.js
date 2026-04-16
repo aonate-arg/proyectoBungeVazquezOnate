@@ -16,8 +16,8 @@ class Series extends Component {
             .then(data => this.setState({ datos: data.results }))
             .catch(error => console.log(error));
     }
-  render() {
-    return (
+    render() {
+        return (
             <React.Fragment>
                 <h2 className="alert alert-primary">Series now playing</h2>
                 {this.state.datos.length === 0?
