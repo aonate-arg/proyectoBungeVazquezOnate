@@ -11,7 +11,8 @@ class Peliculas extends Component {
     super(props)
     this.state = {
       datos: [],
-      pag: 1
+      pag: 1, 
+      cargados: false
       
     };
   }
@@ -19,7 +20,7 @@ class Peliculas extends Component {
     fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API)
 
       .then(response => response.json())
-      .then(data => this.setState({ datos: data.results, backup: data.results },console.log(data)))
+      .then(data => this.setState({ datos: data.results, backup: data.results, cargados: true },console.log(data)))
       .catch(error => console.log(error));
   }
  
@@ -38,7 +39,6 @@ class Peliculas extends Component {
           datos: peliculas
         })
     }
-    /*comparar cada letra del titulo que buscas. También hace que si no coincide ninguno mostrar otro mensaje, no el cargando/ esto tendria que ser un componente?*/
     
   render() {
     return (
@@ -46,8 +46,10 @@ class Peliculas extends Component {
         <Header />
         <h2 className="alert alert-primary">Todas las películas</h2>
 
-        {this.state.datos.length === 0 ?
-          <h3>Cargando...</h3> :
+        {this.state.cargados==false?
+          <h3>Cargando</h3> :
+          this.state.datos.length === 0 ? 
+          <p>No hay info</p>:
           <div>
             <BuscadorFiltro filtrar={(input)=> this.filtrarPeliculas(input)}/>  
             <section className="row cards" id="movies">
@@ -69,4 +71,4 @@ class Peliculas extends Component {
 
 export default Peliculas
 
-/*Agregar buscador con filter*/
+/*aca también use el if ternario con dos condiciones, ver si está bien*/

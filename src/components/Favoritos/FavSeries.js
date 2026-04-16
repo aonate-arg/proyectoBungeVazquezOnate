@@ -7,25 +7,30 @@ class FavSeries extends Component {
     super()
     this.state = {
       tdslosdatos: [],
+      cargados: false,
     }
   }
 
-  agregarDatos(data) {
-    let nuevoArray = this.state.tdslosdatos
-    nuevoArray.push(data)
-    this.setState({ tdslosdatos: nuevoArray })
-  }
   componentDidMount() {
     let listFav = localStorage.getItem("serie")
     console.log(listFav);
-    let listFavJson = JSON.parse(listFav)
-    listFavJson.map((i) =>
-      fetch(`https://api.themoviedb.org/3/tv/${i}?api_key=` + API)
-        .then(response => response.json())
-        .then(data => this.agregarDatos(data))
-        .catch(error => console.log(error))
-    )
-  }
+    let listFavJson = JSON.parse(listFav);
+    
+      if(listFavJson === null || listFavJson.lenght === 0 ){
+        this.setState({cargados: false})
+      }else{
+        const favsRecuperados =[]
+      listFavJson.map((i) =>
+        fetch(`https://api.themoviedb.org/3/tv/${i}?api_key=` + API)
+          .then(response => response.json())
+          .then(data => {
+            favsRecuperados.push(data)
+            this.setState({tdslosdatos: favsRecuperados, cargados: true})
+      })
+          .catch(error => console.log(error))
+      )}}
+    
+  
 
   render() {
     return (
@@ -33,11 +38,11 @@ class FavSeries extends Component {
         <h2 className="alert alert-primary">Series Favoritas</h2>
         <div>
           <section className="row cards" id="serie">
-            {this.state.tdslosdatos.length === 0 ? 
-            
-            <p>No hay series favoritas guardadas</p> :
-
-             this.state.tdslosdatos.map((series) => (
+            {this.state.cargados==false? 
+            <p>No hay peliculas guardadas</p>
+            :this.state.tdslosdatos.length==0?
+            <p>Cargando</p>:
+              this.state.tdslosdatos.map((series) => (
                 <Card
                   type="serie"
                   titulo={series.name}
@@ -45,13 +50,14 @@ class FavSeries extends Component {
                   imagen={series.poster_path}
                   descripcion={series.overview}
                 />
-            ))}
+              ))}
           </section>
         </div>
       </React.Fragment>
     )
   }
 }
+
 
 
 export default FavSeries
