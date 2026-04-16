@@ -1,21 +1,53 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
-import {Link} from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 import Footer from '../../components/Footer/Footer'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 
-const API = "b4012469dde0367276c9701f8ecc44fe"
 class Login extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            valor: ''
+            email: '',
+            password: ''
         };
     }
+
+    login(){
+        let usuarioALogear = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        if(usuarioALogear.password.length < 6){
+            alert('6 caracteres minimo la contra')
+            return
+        }
+
+        let usersStorage = localStorage.getItem('users');
+        let usuariosParseados = JSON.parse(usersStorage);
+
+        let usuariosFiltrados = usuariosParseados.filter(function(user){
+            return user.email == usuarioALogear.email;
+        })
+        console.log(usuariosFiltrados);
+        
+        if (usuariosFiltrados[0].password == usuarioALogear.password) {
+            cookies.set('userEmail', usuarioALogear.email)
+            cookies.set('userPassword', usuarioALogear.password)
+            
+        } else if (usuariosFiltrados.password != usuarioALogear.password) {
+            alert('Credenciales incorrectas')
+            return
+        }
+
+        this.props.history.push('/')
+    }
    
-    
-    /*comparar cada letra del titulo que buscas. También hace que si no coincide ninguno mostrar otro mensaje, no el cargando/ esto tendria que ser un componente?*/
 
     render() {
         return (
@@ -27,14 +59,14 @@ class Login extends Component {
 
                 <div className="row justify-content-center">
                     <div className="col-md-6">
-                        <form>
+                        <form onSubmit={(e)=> {e.preventDefault(); this.login()}}>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" className="form-control" id="email" placeholder="Ingresá tu email"/>
+                                <input onChange={(e)=> this.setState({email: e.target.value})} type="email" className="form-control" id="email" placeholder="Ingresá tu email"/>
                             </div>
                             <div className="form-group">
                                 <label for="password">Contraseña</label>
-                                <input type="password" className="form-control" id="password" placeholder="Ingresá tu contraseña"/>
+                                <input onChange={(e)=> this.setState({password: e.target.value})} type="password" className="form-control" id="password" placeholder="Ingresá tu contraseña"/>
                             </div>
                             <button type="submit" className="btn btn-primary btn-block">Iniciar sesión</button>
                         </form>
@@ -47,6 +79,5 @@ class Login extends Component {
         )
     }
 }
-export default Login
+export default withRouter(Login)
 
-/*el for para que es?, cuando inicias sesion usar ruta parametrizada hacia home*/

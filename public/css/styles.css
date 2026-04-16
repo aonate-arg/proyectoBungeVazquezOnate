@@ -104,6 +104,10 @@ nav {
     display: none
 
 }
+.gif img{
+    width: auto;
+    justify-content: center;
+}
 
 @media(min-width: 765px){
     nav {
