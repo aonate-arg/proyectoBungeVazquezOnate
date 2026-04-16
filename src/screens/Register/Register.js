@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import { withRouter ,Link} from 'react-router-dom'
-import Cookies from 'universal-cookie'
-
-
-const cookies = new Cookies()
-
-
 
 
 class Register extends Component {
@@ -50,9 +44,6 @@ class Register extends Component {
                 usersParseado.push(usuarioACrear);
                 let usersEnJson = JSON.stringify(usersParseado);
                 localStorage.setItem('users', usersEnJson);
-
-                cookies.set('emailUser', usuarioACrear.email)
-                cookies.set('contrasenaUser', usuarioACrear.password)
           
               } else {
                   alert('ya tiene el mail en uso')
@@ -62,10 +53,7 @@ class Register extends Component {
             } else {
                 let usersInicial = [usuarioACrear]
                 let usersEnJson = JSON.stringify(usersInicial)
-                localStorage.setItem('users', usersEnJson);
-
-                cookies.set('emailUser', usuarioACrear.email)
-                cookies.set('contrasenaUser', usuarioACrear.password)
+                localStorage.setItem('users', usersEnJson);                
         }
 
         this.props.history.push('/Login')  
