@@ -77,7 +77,7 @@ class Card extends Component {
                     <p className={this.state.verMas ? "card-text-hide" : "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type == "movie" ? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
-                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id}>
+                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id} className='favoritos'>
                         {this.state.valor}
                     </button>
 

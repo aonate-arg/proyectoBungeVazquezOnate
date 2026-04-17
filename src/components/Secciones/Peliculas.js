@@ -38,7 +38,7 @@ class Peliculas extends Component {
                             imagen={pelicula.poster_path}
                             descripcion={pelicula.overview} />
 
-                    ))}<Link to="/Peliculas">Ver todas las peliculas</Link>
+                    ))}<Link to="/Peliculas" className='verMasBoton'>Ver todas las peliculas</Link>
                 </section>
                 }
             </React.Fragment>

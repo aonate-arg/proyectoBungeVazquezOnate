@@ -30,7 +30,7 @@ class Series extends Component {
                             imagen={series.poster_path}
                             descripcion={series.overview} />
 
-                    ))}<Link to="/Series">Ver todas las series</Link>
+                    ))}<Link to="/Series" className='verMasBoton'>Ver todas las series</Link>
                 </section>}
             </React.Fragment>
         )

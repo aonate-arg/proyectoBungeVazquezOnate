@@ -1,32 +1,36 @@
-import react from 'react'
-import {Link} from 'react-router-dom';
-import Cookies from 'universal-cookie'
+import react from 'react';
+import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 const cookies = new Cookies()
 function Header() {
-    
 
-    return(
-        <nav>
-            <ul class="nav nav-tabs my-4">
-                <li class="nav-item">
-                    <Link to="/" class="nav-link">Home</Link>
+
+    return (
+        <nav className='allHeader'>
+            <img src="/img/logoDigitalPelis.png" alt="Logo Digital Pelis" className='logoHeader' />
+            <ul className="nav nav-tabs my-4">
+                <li className="nav-item">
+                    <Link to="/" className="nav-link">Home</Link>
                 </li>
-                <li class="nav-item">
-                    <Link to="/Peliculas" class="nav-link">Películas</Link>
+                <li className="nav-item">
+                    <Link to="/Peliculas" className="nav-link">Películas</Link>
                 </li>
-                <li class="nav-item">
-                    <Link to="/Series" class="nav-link">Series</Link>
+                <li className="nav-item">
+                    <Link to="/Series" className="nav-link">Series</Link>
                 </li>
-                <li class="nav-item">
-                    <Link to="/Favoritos" class="nav-link">Favoritos</Link>
+                <li className="nav-item">
+                    <Link to="/Favoritos" className="nav-link">Favoritos</Link>
                 </li>
-                <li class="nav-item ml-auto">
-                    <Link to="/Register" class="nav-link">Registro</Link>
-                </li>
-                <li class="nav-item">
-                    <Link to="/Login" class="nav-link">Login</Link>
-                </li>
+                <div className='userNav'>
+                    <li className="nav-item ml-auto">
+                        <Link to="/Register" className="nav-link">Registro</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/Login" className="nav-link">Login</Link>
+                    </li>
+
+                </div>
             </ul>
         </nav>
     )
