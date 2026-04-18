@@ -4,7 +4,7 @@ import Card from '../../components/Card/Card'
 import Header from '../../components/Header/Header'
 
 
-const API = "b4012469dde0367276c9701f8ecc44fe"
+const API = "0b50b82888e5bf5a47ee0f15c8629906"
 class Peliculas extends Component {
 
   constructor(props) {
@@ -17,7 +17,7 @@ class Peliculas extends Component {
     };
   }
   componentDidMount() {
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API)
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=${API}`)
 
       .then(response => response.json())
       .then(data => this.setState({ datos: data.results, backup: data.results, cargados: true },console.log(data)))
@@ -26,7 +26,7 @@ class Peliculas extends Component {
  
   cargarMas = ()=> {
     let newpag = this.state.pag + 1
-    fetch(`https://api.themoviedb.org/3/discover/movie?api_key=` + API + `&page=${newpag}`)
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=` + API + `&page=${newpag}`)
       .then(response => response.json())
       .then(data => this.setState({ datos: this.state.datos.concat(data.results), backup: this.state.datos.concat(data.results), pag: newpag },console.log(data)))
       .catch(error => console.log(error));
@@ -45,13 +45,14 @@ class Peliculas extends Component {
       <React.Fragment>
         <Header />
         <h2 className="alert alert-primary">Todas las películas</h2>
+        <BuscadorFiltro filtrar={(input)=> this.filtrarPeliculas(input)}/>  
 
         {this.state.cargados==false?
           <h3>Cargando</h3> :
           this.state.datos.length === 0 ? 
-          <p>No hay info</p>:
+          <p className="noresult">No hay resultados para su busqueda</p>:
           <div>
-            <BuscadorFiltro filtrar={(input)=> this.filtrarPeliculas(input)}/>  
+              
             <section className="row cards" id="movies">
               {this.state.datos.map((pelicula) => (
                 <Card type="movie"

@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header'
 import BuscadorFiltro from '../../components/BuscadorFiltro/BuscadorFiltro'
 import Card from '../../components/Card/Card'
 
-const API = "b4012469dde0367276c9701f8ecc44fe"
+const API = "0b50b82888e5bf5a47ee0f15c8629906"
 class Series extends Component {
 
   constructor(props) {
@@ -15,7 +15,7 @@ class Series extends Component {
     };
   }
   componentDidMount() {
-    fetch('https://api.themoviedb.org/3/discover/tv?api_key=' + API)
+    fetch(`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'&api_key=${API}`)
 
       .then(response => response.json())
       .then(data => this.setState({ datos: data.results, backup: data.results },console.log(data)))
@@ -44,10 +44,13 @@ class Series extends Component {
       <React.Fragment>
         <Header />
         <h2 class="alert alert-warning">Todas las series</h2>
+        <BuscadorFiltro filtrar={(input)=> this.filtrarSeries(input)}/> 
 
-        {this.state.datos.length === 0 ?
-          <h3>Cargando...</h3> :
-          <div> <BuscadorFiltro filtrar={(input)=> this.filtrarSeries(input)}/> 
+        {this.state.cargados==false?
+          <h3>Cargando</h3> :
+          this.state.datos.length === 0 ? 
+          <p className="noresult">No hay resultados para su busqueda</p>:
+          <div> 
             <section className="row cards" id="series">
             
             {this.state.datos.map((serie) => (

@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 class Busqueda extends Component {
   constructor(props) {
     super(props);
-    this.state = ({ valor: '', tipo: '' })
+    this.state = ({ valor: '', tipo: 'pelicula' })
   }
 
   evitarBusqueda(e) {
@@ -37,11 +37,11 @@ class Busqueda extends Component {
         <div className='radios'>
           <label className='radiolabel'>
             <span>Pelicula</span>
-            <input onChange={(event) => this.tipoPelicula(event)} type="radio" name="tipo" value="pelicula"></input>
+            <input onClick={(event) => this.tipoPelicula(event)} type="radio" name="tipo" value="pelicula" defaultChecked></input>
           </label>
           <label className='radiolabel'>
             <span>Serie</span>
-            <input onChange={(event) => this.tipoSerie(event)} type="radio" name="tipo" value="serie" defaultChecked></input>
+            <input onClick={(event) => this.tipoSerie(event)} type="radio" name="tipo" value="serie"></input>
           </label>
         </div>
       </form>
@@ -49,4 +49,5 @@ class Busqueda extends Component {
   }
 }
 
+/*el problema de por que nos tira a notfound si buscas algo sin apretar nada es que esta mal la ruta xq no llega ningun tipo*/
 export default withRouter(Busqueda)

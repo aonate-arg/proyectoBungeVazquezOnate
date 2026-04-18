@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from '../Card/Card'
 
-const API = "b4012469dde0367276c9701f8ecc44fe"
+const API = "0b50b82888e5bf5a47ee0f15c8629906"
 class FavMovies extends Component {
   constructor() {
     super()
@@ -44,13 +44,13 @@ class FavMovies extends Component {
         <div>
           <section className="row cards" id="movie">
            {this.state.cargados==false? 
-            <p>No hay peliculas guardadas</p>
+            <p className="noresult">No hay peliculas guardadas</p>
             :this.state.tdslosdatos.length==0?
             <p>Cargando</p>:
               this.state.tdslosdatos.map((peliculas) => (
               <Card
                 type="movie"
-                titulo={peliculas.name}
+                titulo={peliculas.title}
                 id={peliculas.id}
                 imagen={peliculas.poster_path}
                 descripcion={peliculas.overview}

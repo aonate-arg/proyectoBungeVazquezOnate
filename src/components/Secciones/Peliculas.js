@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
-const API = "b4012469dde0367276c9701f8ecc44fe"
+const API = "0b50b82888e5bf5a47ee0f15c8629906"
 class Peliculas extends Component {
     constructor(props) {
         super(props)

@@ -24,6 +24,7 @@ a:hover {
 
 .logoHeader {
     height: 70px;
+    max-width: 70px
 }
 
 nav {
@@ -185,8 +186,8 @@ button {
 }
 
 .card-img-top {
-    width: 400px;
-    margin: 0px 6% 0px 6%;;
+    width: 100%;
+    
 }
 
 .all-movies .single-card-movie {
@@ -218,6 +219,14 @@ button {
     width: auto;
     justify-content: center;
 }
+
+.noresult{
+  text-align: center;
+  margin-top: 40px;
+  color: gray;
+  font-size: 25px;
+}
+
 
 @media(max-width: 1440px) {
 

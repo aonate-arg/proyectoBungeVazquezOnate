@@ -8,7 +8,7 @@ function Header() {
 
     return (
         <nav className='allHeader'>
-            <img src="/img/logoDigitalPelis.png" alt="Logo Digital Pelis" className='logoHeader' />
+            <img className='logoHeader' src="/img/logoDigitalPelis.png" alt="Logo Digital Pelis"  />
             <ul className="nav nav-tabs my-4">
                 <li className="nav-item">
                     <Link to="/" className="nav-link">Home</Link>
