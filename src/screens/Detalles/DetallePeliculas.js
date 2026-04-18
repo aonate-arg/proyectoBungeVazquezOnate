@@ -32,7 +32,7 @@ class DetallePeliculas extends Component {
         <h3>Cargando...</h3>:
           <div>
             <h2 className="alert alert-primary">{this.state.datos.title}</h2>
-            <section className="row">
+            <section className="detalles">
               <section className="col-md-6 info">
                 <h3>Descripción</h3>
                 <p className="description">{this.state.datos.overview}</p>
