@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Card from '../../components/Card/Card';
-import Peliculas from '../../components/Secciones/Peliculas';
+import SeccionPeliculas from '../../components/Secciones/SeccionPeliculas';
 import Busqueda from '../../components/Busqueda/Busqueda';
-import Series from '../../components/Secciones/Series'
+import SeccionSeries from '../../components/Secciones/SeccionSeries'
 
 
 
@@ -14,8 +14,8 @@ class Home extends Component {
             <React.Fragment>
                 <Header />
                 <Busqueda />
-                <Peliculas/>
-                <Series/>
+                <SeccionPeliculas/>
+                <SeccionSeries/>
                 <Footer />
             </React.Fragment>
         )

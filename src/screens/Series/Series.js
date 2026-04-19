@@ -43,7 +43,7 @@ class Series extends Component {
     return (
       <React.Fragment>
         <Header />
-        <h2 class="alert alert-warning">Todas las series</h2>
+        <h2 className="alert alert-warning">Todas las series</h2>
         <BuscadorFiltro filtrar={(input)=> this.filtrarSeries(input)}/> 
 
         {this.state.cargados==false?

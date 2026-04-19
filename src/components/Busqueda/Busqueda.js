@@ -33,7 +33,7 @@ class Busqueda extends Component {
     return (
       <form onSubmit={(event) => this.evitarBusqueda(event)} className="search-form">
         <input type="text" onChange={(event) => this.controlarCambios(event)} value={this.state.valor} name="searchData" placeholder="Buscar..." />
-        <button type="submit" class="btn btn-success btn-sm">Buscar</button>
+        <button type="submit" className="btn btn-success btn-sm">Buscar</button>
         <div className='radios'>
           <label className='radiolabel'>
             <span>Pelicula</span>

@@ -47,7 +47,7 @@ class FavMovies extends Component {
             <p className="noresult">No hay peliculas guardadas</p>
             :this.state.tdslosdatos.length==0?
             <p>Cargando</p>:
-              this.state.tdslosdatos.map((peliculas) => (
+              this.state.tdslosdatos.map((peliculas, id) => (
               <Card
                 type="movie"
                 titulo={peliculas.title}

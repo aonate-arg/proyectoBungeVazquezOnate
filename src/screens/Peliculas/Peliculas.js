@@ -17,7 +17,7 @@ class Peliculas extends Component {
     };
   }
   componentDidMount() {
-    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=${API}`)
+    fetch(`https://api.themoviedb.org/3/movie/top_rated?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc` + `&api_key=${API}`)
 
       .then(response => response.json())
       .then(data => this.setState({ datos: data.results, backup: data.results, cargados: true },console.log(data)))
@@ -54,7 +54,7 @@ class Peliculas extends Component {
           <div>
               
             <section className="row cards" id="movies">
-              {this.state.datos.map((pelicula) => (
+              {this.state.datos.map((pelicula, id) => (
                 <Card type="movie"
                   titulo={pelicula.title}
                   id={pelicula.id}

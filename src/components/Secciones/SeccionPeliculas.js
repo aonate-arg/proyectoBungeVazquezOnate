@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
 const API = "0b50b82888e5bf5a47ee0f15c8629906"
-class Peliculas extends Component {
+class SeccionPeliculas extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -47,7 +47,7 @@ class Peliculas extends Component {
 }
 
 
-export default Peliculas
+export default SeccionPeliculas
 /*el buscador de filter tiene que ser un componente o aca adentro esta bien?*/
 /*Agregar cargando y ver si esta bien primero filter y despues map*/
 /*{this.state.datos.map((pelicula, idx) => (
