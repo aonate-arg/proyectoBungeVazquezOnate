@@ -1,25 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom';
 import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
-class Header extends Component() {
+function Header(){
 
-    constructor(props){
-        super(props)
-        this.state = {
-            valor: ''
-        }
-    }
 
-    componentDidMount(){
-        let usuario = cookies.get('userEmail')
-        
-    }
-
-    render(){
-        return(
-            <React.Fragment>
+    return(
                 <nav>
                     <ul class="nav nav-tabs my-4">
                         <li class="nav-item">
@@ -42,9 +29,8 @@ class Header extends Component() {
                         </li>
                     </ul>
                 </nav>
-            </React.Fragment>
         )
-    }
+    
 }
 
 export default Header;
