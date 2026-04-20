@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies()
 class Card extends Component {
     constructor(props) {
         super(props)
@@ -8,6 +10,7 @@ class Card extends Component {
             estadoFavoritos: false,
             valor: "🩶",
             verMas: true,
+            logi: false,
         }
     }
     
@@ -22,8 +25,23 @@ class Card extends Component {
                 this.setState({ estadoFavoritos: true, valor: "♥️" })
             }
         }
+        
+        this.verificar()
     }
 
+    verificar(){
+        let logeado = cookies.get('userEmail')
+
+        if (logeado != null) {
+            this.setState({logi: true})
+        } else {
+            this.setState({logi: false})
+        }
+        console.log(logeado);
+        console.log(this.state);
+        
+        
+    }
 
     agregarfav(id, tipo) {
         let storage = localStorage.getItem(tipo)
@@ -78,7 +96,7 @@ class Card extends Component {
                     <p className={this.state.verMas ? "card-text-hide" : "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type == "movie" ? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
-                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id} className='favoritos'>
+                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id} className={this.state.logi?'favoritos':'card-text-hide'}>
                         {this.state.valor}
                     </button>
 
