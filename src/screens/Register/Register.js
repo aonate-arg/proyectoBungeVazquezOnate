@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
 import { withRouter, Link } from 'react-router-dom'
 
 
@@ -62,7 +60,6 @@ class Register extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header />
                 <h2 className="alert alert-primary">Registro</h2>
 
 
@@ -82,7 +79,6 @@ class Register extends Component {
                         <p className="mt-3 text-center">¿Ya tenés cuenta? <Link to="/Login">Iniciar Sesion</Link></p>
                     </div>
                 </div>
-                <Footer />
             </React.Fragment>
         )
     }
