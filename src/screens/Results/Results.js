@@ -48,6 +48,7 @@ class Results extends Component {
                     key={elemento.id}
                     titulo={mediaType == "pelicula" ? elemento.title : elemento.name}
                     id={elemento.id}
+                    type={mediaType=="pelicula"?'movie':'serie'}
                     imagen={`https://image.tmdb.org/t/p/w500${elemento.poster_path}`}
                     descripcion={elemento.overview} />))}
               </section>
