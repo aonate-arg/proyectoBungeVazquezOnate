@@ -38,9 +38,9 @@ class DetallePeliculas extends Component {
     
     this.verificar()
       
+  
   /*Agregar cargando antes de que lleguen los datos del fetch*/       
   }
-
     agregarfav(id) {
         let storage = localStorage.getItem("movie")
         let storageJson = JSON.parse(storage)
@@ -112,4 +112,5 @@ class DetallePeliculas extends Component {
     )
 }}
 export default DetallePeliculas;
-  
+
+/*cuando recarga detalles hay problema con el css, ver eso*/
