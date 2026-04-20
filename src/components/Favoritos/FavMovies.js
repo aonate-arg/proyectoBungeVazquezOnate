@@ -7,11 +7,11 @@ class FavMovies extends Component {
     super()
     this.state = {
       tdslosdatos: [],
-      cargados:false
+      cargados: false
     }
   }
 
-  
+
 
 
   componentDidMount() {
@@ -21,8 +21,8 @@ class FavMovies extends Component {
 
     console.log('listFavJSON movies', listFavJson);
 
-    if(listFavJson === null || listFavJson.lenght === 0)  {
-      this.setState({ cargados: false }) 
+    if (listFavJson === null || listFavJson.lenght === 0) {
+      this.setState({ cargados: false })
     } else {
       const favsRecuperados = []
       listFavJson.map((i) =>
@@ -30,7 +30,7 @@ class FavMovies extends Component {
           .then(response => response.json())
           .then(data => {
             favsRecuperados.push(data)
-            this.setState({tdslosdatos:favsRecuperados, cargados:true })
+            this.setState({ tdslosdatos: favsRecuperados, cargados: true })
           })
           .catch(error => console.log(error))
       )
@@ -43,19 +43,19 @@ class FavMovies extends Component {
         <h2 className="alert alert-primary">Peliculas Favoritas</h2>
         <div>
           <section className="row cards" id="movie">
-           {this.state.cargados==false? 
-            <p className="noresult">No hay peliculas guardadas</p>
-            :this.state.tdslosdatos.length==0?
-            <p>Cargando</p>:
-              this.state.tdslosdatos.map((peliculas, id) => (
-              <Card
-                type="movie"
-                titulo={peliculas.title}
-                id={peliculas.id}
-                imagen={peliculas.poster_path}
-                descripcion={peliculas.overview}
-              />
-            ))
+            {this.state.cargados == false ?
+              <p className="noresult">No hay peliculas guardadas</p>
+              : this.state.tdslosdatos.length == 0 ?
+                <p>Cargando</p> :
+                this.state.tdslosdatos.map((peliculas, id) => (
+                  <Card
+                    type="movie"
+                    titulo={peliculas.title}
+                    id={peliculas.id}
+                    imagen={peliculas.poster_path}
+                    descripcion={peliculas.overview}
+                  />
+                ))
 
             }
 

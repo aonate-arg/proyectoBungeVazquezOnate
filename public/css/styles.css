@@ -24,7 +24,7 @@ a:hover {
 
 .logoHeader {
     height: 70px;
-    max-width: 70px;
+    max-width: 70px
 }
 
 nav {
@@ -53,26 +53,39 @@ nav {
     margin-left: 1242px;
 }
 
-.search-form,
-.filter-form {
+.search-form{
     padding: .5rem 0;
     margin-bottom: 20px;
     display: grid;
     grid-template-columns: 5fr 1fr;
     column-gap: 5px;
+    
 }
 
-.filter-form {
-    grid-template-columns: 1fr;
+.buscadorFilter{
+   padding: .5rem 0;
+    margin-bottom: 20px;
+    column-gap: 5px;
 }
+
+.buscadorFilter input{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-top: 3px;
+    vertical-align: middle;
+    line-height: 1;
+    font-size: 1rem;
+    padding-bottom: 4px;
+    width: 100%;
+}
+
 
 .search-form .btn-sm {
     line-height: 1;
     font-size: 0.9rem;
 }
 
-.search-form input,
-.filter-form input {
+.search-form input{
     border: 1px solid #ccc;
     border-radius: 4px;
     padding-top: 3px;
@@ -82,9 +95,7 @@ nav {
     padding-bottom: 4px;
 }
 
-.filter-form input {
-    line-height: 1.5;
-}
+
 
 button {
     background-color: #eee;
@@ -101,9 +112,9 @@ button {
     gap: 10px;
 }
 
-.radiolabel input {
+/*.radiolabel input {
     display: ;
-}
+}*/
 
 .radiolabel span {
     padding: 8px 18px;
@@ -129,7 +140,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 2%;
 }
 
@@ -144,7 +155,7 @@ button {
 }
 
 .favoritos {
-    margin-left: 50px;
+    margin-left: 9x;
 }
 
 .single-card-people {
@@ -186,7 +197,7 @@ button {
 }
 
 .card-img-top {
-    width: 100%;
+    width: 98%;
     
 }
 
@@ -226,6 +237,8 @@ button {
   color: gray;
   font-size: 25px;
 }
+
+
 
 
 @media(max-width: 1440px) {
@@ -300,4 +313,19 @@ button {
         margin-top: 10px;    
     }
 
+}
+
+@media (max-width: 480px){
+    
+    .single-card-movie{
+        width: 80%;
+        justify-content: center;
+        margin-left: 10%;
+        
+        height: fit-content;
+        
+    }
+    .card-img-top{
+        width: 85%;
+    }
 }

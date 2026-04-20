@@ -49,5 +49,5 @@ class Busqueda extends Component {
   }
 }
 
-/*el problema de por que nos tira a notfound si buscas algo sin apretar nada es que esta mal la ruta xq no llega ningun tipo*/
+
 export default withRouter(Busqueda)

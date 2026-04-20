@@ -17,6 +17,8 @@ import Login from './screens/Login/Login'
 
 function App() {
   return (
+    <React.Fragment>
+    <Header />
     <Switch>
       <Route path="/" exact={true} component={Home} />
       <Route path="/Login" component={Login}/>
@@ -28,8 +30,10 @@ function App() {
       <Route path="/Series" component={Series}/>
       <Route path="/Peliculas" component={Peliculas}/>
       <Route path="" component={Notfound}/>
-      <Card/>
     </Switch>
+    <Footer />
+    </React.Fragment>
+
   );
 }
 

@@ -11,60 +11,57 @@ class Peliculas extends Component {
     super(props)
     this.state = {
       datos: [],
-      pag: 1, 
+      pag: 1,
       cargados: false
-      
+
     };
   }
   componentDidMount() {
     fetch(`https://api.themoviedb.org/3/movie/top_rated?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc` + `&api_key=${API}`)
 
       .then(response => response.json())
-      .then(data => this.setState({ datos: data.results, backup: data.results, cargados: true },console.log(data)))
+      .then(data => this.setState({ datos: data.results, backup: data.results, cargados: true }))
       .catch(error => console.log(error));
   }
- 
-  cargarMas = ()=> {
+
+  cargarMas = () => {
     let newpag = this.state.pag + 1
     fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=` + API + `&page=${newpag}`)
       .then(response => response.json())
-      .then(data => this.setState({ datos: this.state.datos.concat(data.results), backup: this.state.datos.concat(data.results), pag: newpag },console.log(data)))
+      .then(data => this.setState({ datos: this.state.datos.concat(data.results), backup: this.state.datos.concat(data.results), pag: newpag }))
       .catch(error => console.log(error));
-
   }
 
-    filtrarPeliculas(Pelicula){
-        const peliculas = this.state.backup.filter((i)=> i.title.toLowerCase().includes(Pelicula.toLowerCase()))
-        this.setState({
-          datos: peliculas
-        })
-    }
-    
+  filtrarPeliculas(Pelicula) {
+    const peliculas = this.state.backup.filter((i) => i.title.toLowerCase().includes(Pelicula.toLowerCase()))
+    this.setState({
+      datos: peliculas
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Header />
         <h2 className="alert alert-primary">Todas las películas</h2>
-        <BuscadorFiltro filtrar={(input)=> this.filtrarPeliculas(input)}/>  
+        <BuscadorFiltro filtrar={(input) => this.filtrarPeliculas(input)} />
 
-        {this.state.cargados==false?
+        {this.state.cargados == false ?
           <h3>Cargando</h3> :
-          this.state.datos.length === 0 ? 
-          <p className="noresult">No hay resultados para su busqueda</p>:
-          <div>
-              
-            <section className="row cards" id="movies">
-              {this.state.datos.map((pelicula, id) => (
-                <Card type="movie"
-                  titulo={pelicula.title}
-                  id={pelicula.id}
-                  imagen={pelicula.poster_path}
-                  descripcion={pelicula.overview} />
-              ))}
-            </section>
-            <button onClick={this.cargarMas}>Cargar más</button>
-          </div>}
-
+          this.state.datos.length === 0 ?
+            <p className="noresult">No hay resultados para su busqueda</p> :
+            <div>
+              <section className="row cards" id="movies">
+                {this.state.datos.map((pelicula, id) => (
+                  <Card type="movie"
+                    titulo={pelicula.title}
+                    key={pelicula.id}
+                    id={pelicula.id}
+                    imagen={pelicula.poster_path}
+                    descripcion={pelicula.overview} />
+                ))}
+              </section>
+              <button onClick={this.cargarMas}>Cargar más</button>
+            </div>}
       </React.Fragment>
     )
   }
@@ -72,4 +69,4 @@ class Peliculas extends Component {
 
 export default Peliculas
 
-/*aca también use el if ternario con dos condiciones, ver si está bien*/
+
