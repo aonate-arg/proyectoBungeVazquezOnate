@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import Cookies from 'universal-cookie';
-
+import Cookies from 'universal-cookie'
 
 const API = "0b50b82888e5bf5a47ee0f15c8629906"
 const cookies = new Cookies()
+
 class DetallePeliculas extends Component {
 
   constructor(props) {
@@ -14,7 +12,7 @@ class DetallePeliculas extends Component {
       datos: null,
       estadoFavoritos: false,
       valor: "🩶",
-      log: false
+      logi: false,
     };
   }
 
@@ -24,28 +22,32 @@ class DetallePeliculas extends Component {
       .then(response => response.json())
       .then(data => this.setState({ datos: data }))
       .catch(error => console.log(error));
-
     let storage = localStorage.getItem("movie")
     let storageJson = JSON.parse(storage)
-
     if (storageJson !== null) {
       let esFavorito = storageJson.filter(id => id == ID).length > 0
       if (esFavorito) {
         this.setState({ estadoFavoritos: true, valor: "♥️" })
       }
     }
+
     this.verificar()
+
   }
 
   verificar() {
     let logeado = cookies.get('userEmail')
 
     if (logeado != null) {
-      this.setState({ log: true })
+      this.setState({ logi: true })
     } else {
-      this.setState({ log: false })
+      this.setState({ logi: false })
     }
+    console.log(logeado);
+    console.log(this.state);
   }
+
+
 
   agregarfav(id) {
     let storage = localStorage.getItem("movie")
@@ -87,8 +89,8 @@ class DetallePeliculas extends Component {
                 <p className="mt-0 mb-0 length"><strong>Duración:</strong> {this.state.datos.runtime} minutos </p>
                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.datos.vote_average}</p>
                 <ul className="mt-0 mb-0 length"><strong>Géneros:</strong> {this.state.datos.genres.map((genero, idx) =>
-                  <li key={genero+idx}> {genero.name}</li>)}</ul>
-                <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.state.datos.id) : this.Eliminar(this.state.datos.id)} value={this.props.id} className={this.state.log ? 'favoritos' : 'card-text-hide'}>
+                  <li key={genero + idx}> {genero.name}</li>)}</ul>
+                <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.state.datos.id) : this.Eliminar(this.state.datos.id)} value={this.props.id} className={this.state.logi ? 'favoritos' : 'card-text-hide'}>
                   {this.state.valor}
                 </button>
               </section>

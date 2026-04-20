@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
-import Cookies from 'universal-cookie';
-
+import Cookies from 'universal-cookie'
 const API = "0b50b82888e5bf5a47ee0f15c8629906"
 const cookies = new Cookies()
 class DetalleSeries extends Component {
@@ -13,7 +12,9 @@ class DetalleSeries extends Component {
       datos: null,
       estadoFavoritos: false,
       valor: "🩶",
-      log: false
+      logi: false
+      
+      
     };
   }
 
@@ -27,39 +28,47 @@ class DetalleSeries extends Component {
     let storage = localStorage.getItem("serie")
     let storageJson = JSON.parse(storage)
 
-    if (storageJson !== null) {
-      let esFavorito = storageJson.filter(id => id == ID).length > 0
-      if (esFavorito) {
-        this.setState({ estadoFavoritos: true, valor: "♥️" })
-      }
-    }
-    this.verificar()
+        if (storageJson !== null) {
+            let esFavorito = storageJson.filter(id => id == ID).length > 0
+            if (esFavorito) {
+                this.setState({ estadoFavoritos: true, valor: "♥️" })
+            }}
+    
+    fetch(`https://api.themoviedb.org/3/tv/${ID}?api_key=`+API)
+
+      .then(response => response.json())
+      .then(data => this.setState({datos: data}))
+      .catch(error => console.log(error));
+      this.verificar()
   }
 
   verificar() {
     let logeado = cookies.get('userEmail')
+
     if (logeado != null) {
-      this.setState({ log: true })
+      this.setState({ logi: true })
     } else {
-      this.setState({ log: false })
+      this.setState({ logi: false })
     }
+    console.log(logeado);
+    console.log(this.state);
   }
 
   agregarfav(id) {
-    let storage = localStorage.getItem("serie")
-    let storageJson = JSON.parse(storage)
-    if (storageJson == null) {
-      let primerValor = [id]
-      let primerString = JSON.stringify(primerValor)
-      localStorage.setItem("serie", primerString)
+        let storage = localStorage.getItem("serie")
+        let storageJson = JSON.parse(storage)
+        if (storageJson == null) {
+            let primerValor = [id]
+            let primerString = JSON.stringify(primerValor)
+            localStorage.setItem("serie", primerString)
+        }
+        else {
+            storageJson.push(id)
+            let storageString = JSON.stringify(storageJson)
+            localStorage.setItem("serie", storageString)
+        }
+        this.setState({ estadoFavoritos: true, valor: "♥️" })
     }
-    else {
-      storageJson.push(id)
-      let storageString = JSON.stringify(storageJson)
-      localStorage.setItem("serie", storageString)
-    }
-    this.setState({ estadoFavoritos: true, valor: "♥️" })
-  }
 
   Eliminar(id) {
     let listFav = localStorage.getItem("serie")
@@ -83,11 +92,11 @@ class DetalleSeries extends Component {
                 <p className="description">{this.state.datos.overview}</p>
                 <p className="mt-0 mb-0" id="release-date"><strong>Fecha de estreno:</strong> {this.state.datos.first_air_date}</p>
                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.datos.vote_average}</p>
-                <ul className="mt-0 mb-0 length"><strong>Géneros:</strong> {this.state.datos.genres.map((genero, idx) =>
-                  <li key={idx}> {genero.name}</li>)}</ul>
-                <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.state.datos.id) : this.Eliminar(this.state.datos.id)} value={this.props.id} className={this.state.log ? 'favoritos' : 'card-text-hide'}>
-                  {this.state.valor}
-                </button>
+                <ul className="mt-0 mb-0 length"><strong>Géneros:</strong> {this.state.datos.genres.map((genero,idx)=>
+                <li key={idx}> {genero.name}</li>)}</ul>
+                <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.state.datos.id) : this.Eliminar(this.state.datos.id)} value={this.props.id} className={this.state.logi ? 'favoritos' : 'card-text-hide'}>
+                        {this.state.valor}
+              </button>
               </section>
               <img src={`https://image.tmdb.org/t/p/w500${this.state.datos.poster_path}`} className="col-md-6" alt={this.state.datos.title} />
             </section>
