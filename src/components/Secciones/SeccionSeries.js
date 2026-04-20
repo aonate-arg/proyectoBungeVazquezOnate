@@ -22,9 +22,10 @@ class SeccionSeries extends Component {
                 <h2 className="alert alert-primary">Series now playing</h2>
                 {this.state.datos.length === 0?
                 <h3>Cargando...</h3>:
-                <section class="row cards" id="on-air-today">
+                <section className="row cards" id="on-air-today">
                     {this.state.datos.filter((series, idx) => idx<4).map((series) => (
                         <Card type="serie"
+                            key={series.id}
                             titulo={series.name}
                             id={series.id}
                             imagen={series.poster_path}
@@ -37,6 +38,6 @@ class SeccionSeries extends Component {
     }
     
   }
-/*Para diferenciar entre pelicula y serie en cada card que corresponde le agrego el tipo*/
+
 
 export default SeccionSeries

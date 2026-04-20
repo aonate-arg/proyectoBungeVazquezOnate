@@ -12,8 +12,6 @@ class FavMovies extends Component {
   }
 
 
-
-
   componentDidMount() {
     let listFav = localStorage.getItem("movie")
     console.log(listFav);
@@ -47,8 +45,9 @@ class FavMovies extends Component {
               <p className="noresult">No hay peliculas guardadas</p>
               : this.state.tdslosdatos.length == 0 ?
                 <p>Cargando</p> :
-                this.state.tdslosdatos.map((peliculas, id) => (
+                this.state.tdslosdatos.map((peliculas) => (
                   <Card
+                    key={peliculas.id}
                     type="movie"
                     titulo={peliculas.title}
                     id={peliculas.id}

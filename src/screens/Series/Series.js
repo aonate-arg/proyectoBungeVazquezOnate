@@ -50,7 +50,7 @@ class Series extends Component {
             <div>
               <section className="row cards" id="series">
 
-                {this.state.datos.map((serie, id) => (
+                {this.state.datos.map((serie) => (
                   <Card type="serie"
                     titulo={serie.name}
                     key={serie.id}

@@ -24,7 +24,7 @@ class Peliculas extends Component {
  
   cargarMas = ()=> {
     let newpag = this.state.pag + 1
-    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=` + API + `&page=${newpag}`)
+    fetch(`https://api.themoviedb.org/3/movie/top_rated?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=` + API + `&page=${newpag}`)
       .then(response => response.json())
       .then(data => this.setState({ datos: this.state.datos.concat(data.results), backup: this.state.datos.concat(data.results), pag: newpag },console.log(data)))
       .catch(error => console.log(error));
@@ -52,9 +52,10 @@ class Peliculas extends Component {
           <div>
               
             <section className="row cards" id="movies">
-              {this.state.datos.map((pelicula, id) => (
+              {this.state.datos.map((pelicula) => (
                 <Card type="movie"
                   titulo={pelicula.title}
+                  key={pelicula.id}
                   id={pelicula.id}
                   imagen={pelicula.poster_path}
                   descripcion={pelicula.overview} />
@@ -70,4 +71,4 @@ class Peliculas extends Component {
 
 export default Peliculas
 
-/*aca también use el if ternario con dos condiciones, ver si está bien*/
+

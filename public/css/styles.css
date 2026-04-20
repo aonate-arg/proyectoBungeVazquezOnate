@@ -53,22 +53,22 @@ nav {
     margin-left: 1242px;
 }
 
-.search-form{
+.search-form {
     padding: .5rem 0;
     margin-bottom: 20px;
     display: grid;
     grid-template-columns: 5fr 1fr;
     column-gap: 5px;
-    
+
 }
 
-.buscadorFilter{
-   padding: .5rem 0;
+.buscadorFilter {
+    padding: .5rem 0;
     margin-bottom: 20px;
     column-gap: 5px;
 }
 
-.buscadorFilter input{
+.buscadorFilter input {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding-top: 3px;
@@ -85,7 +85,7 @@ nav {
     font-size: 0.9rem;
 }
 
-.search-form input{
+.search-form input {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding-top: 3px;
@@ -101,7 +101,7 @@ button {
     background-color: #eee;
     color: black;
     border: none;
-    padding:10px;
+    padding: 10px;
     border-radius: 8px;
     cursor: pointer;
 }
@@ -198,7 +198,7 @@ button {
 
 .card-img-top {
     width: 98%;
-    
+
 }
 
 .all-movies .single-card-movie {
@@ -227,16 +227,16 @@ button {
 }
 
 .gif {
-    margin-left: 39%; 
+    margin-left: 39%;
     width: auto;
     align-content: center;
 }
 
-.noresult{
-  text-align: center;
-  margin-top: 40px;
-  color: gray;
-  font-size: 25px;
+.noresult {
+    text-align: center;
+    margin-top: 40px;
+    color: gray;
+    font-size: 25px;
 }
 
 
@@ -250,7 +250,8 @@ button {
 
     .card-img-top {
         width: 400px;
-        margin: 0px 11% 0px 14%;;
+        margin: 0px 11% 0px 14%;
+        ;
     }
 
     .userNav {
@@ -273,6 +274,7 @@ button {
     nav {
         grid-template-columns: 1fr;
     }
+
     .userNav {
         display: flex;
         margin-left: 350px;
@@ -281,7 +283,7 @@ button {
     .favoritos {
         margin-left: 21%;
         margin-top: 10px;
-    }       
+    }
 
     .card-img-top {
         width: 180px;
@@ -311,22 +313,32 @@ button {
 
     .favoritos {
         margin-left: 6px;
-        margin-top: 10px;    
+        margin-top: 10px;
     }
 
 }
 
-@media (max-width: 480px){
-    
-    .single-card-movie{
+@media (max-width: 480px) {
+
+    .detalles {
+        flex-direction: column-reverse;
+    }
+
+    .single-card-movie {
         width: 80%;
         justify-content: center;
         margin-left: 10%;
-        
         height: fit-content;
-        
+
     }
-    .card-img-top{
+
+    .card-img-top {
         width: 85%;
+
     }
+
+    .gif {
+        margin-left: 0px;
+    }
+
 }

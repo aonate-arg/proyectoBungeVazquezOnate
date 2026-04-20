@@ -33,6 +33,7 @@ class SeccionPeliculas extends Component {
                    
                    {this.state.datos.filter((pelicula, idx) => idx<4).map((pelicula) => (
                         <Card type= "movie"
+                            key={pelicula.id}
                             titulo={pelicula.title}
                             id={pelicula.id}
                             imagen={pelicula.poster_path}
@@ -48,14 +49,4 @@ class SeccionPeliculas extends Component {
 
 
 export default SeccionPeliculas
-/*el buscador de filter tiene que ser un componente o aca adentro esta bien?*/
-/*Agregar cargando y ver si esta bien primero filter y despues map*/
-/*{this.state.datos.map((pelicula, idx) => (
-                        <Card
-                            titulo={pelicula.title}
-                            key={pelicula+idx}
-                            id={pelicula.id}
-                            imagen={pelicula.backdrop_path}
-                            descripcion={pelicula.overview} />
 
-                    ))}*/
