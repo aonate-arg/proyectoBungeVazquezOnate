@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import Cookies from 'universal-cookie'
+
 const API = "0b50b82888e5bf5a47ee0f15c8629906"
+const cookies = new Cookies()
 
 class DetalleSeries extends Component {
   
@@ -11,6 +14,7 @@ class DetalleSeries extends Component {
       datos: null,
       estadoFavoritos : false,
       valor: "🩶",
+      log: false,
       
       
     };
@@ -33,7 +37,7 @@ class DetalleSeries extends Component {
       .catch(error => console.log(error));
 
        
-      
+    this.verificar()
   /*Agregar cargando antes de que lleguen los datos del fetch*/    
       
 
@@ -53,6 +57,20 @@ class DetalleSeries extends Component {
             localStorage.setItem("serie", storageString)
         }
         this.setState({ estadoFavoritos: true, valor: "♥️" })
+    }
+
+    verificar(){
+        let logeado = cookies.get('userEmail')
+
+        if (logeado != null) {
+            this.setState({logi: true})
+        } else {
+            this.setState({logi: false})
+        }
+        console.log(logeado);
+        console.log(this.state);
+        
+        
     }
 
     Eliminar(id) {
@@ -83,7 +101,7 @@ class DetalleSeries extends Component {
                 <p className="mt-0" id="votes"><strong>Puntuación:</strong> {this.state.datos.vote_average}</p>
                 <ul className="mt-0 mb-0 length"><strong>Géneros:</strong> {this.state.datos.genres.map((genero,idx)=>
                 <li key={idx}> {genero.name}</li>)}</ul>
-                <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.state.datos.id) : this.Eliminar(this.state.datos.id)} value={this.props.id} className='favoritos'>
+                <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.state.datos.id) : this.Eliminar(this.state.datos.id)} value={this.props.id} className={this.state.logi?'favoritos':'card-text-hide'}>
                         {this.state.valor}
               </button>
               </section>
