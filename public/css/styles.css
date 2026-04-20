@@ -226,9 +226,10 @@ button {
     background-color: #eee;
 }
 
-.gif img {
+.gif {
+    margin-left: 39%; 
     width: auto;
-    justify-content: center;
+    align-content: center;
 }
 
 .noresult{

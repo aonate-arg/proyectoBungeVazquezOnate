@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import FavMovies from '../../components/Favoritos/FavMovies'
 import FavSeries from '../../components/Favoritos/FavSeries'
 

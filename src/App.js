@@ -8,12 +8,11 @@ import Results from './screens/Results/Results';
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import DetallePeliculas from "./screens/Detalles/DetallePeliculas";
-import DetalleSeries from "./screens/Detalles/DetalleSeries"
-import Favoritos from './screens/Favoritos/Favoritos'
-import Card from "./components/Card/Card";
-import Series from './screens/Series/Series'
-import Peliculas from './screens/Peliculas/Peliculas'
-import Login from './screens/Login/Login'
+import DetalleSeries from "./screens/Detalles/DetalleSeries";
+import Favoritos from './screens/Favoritos/Favoritos';
+import Series from './screens/Series/Series';
+import Peliculas from './screens/Peliculas/Peliculas';
+import Login from './screens/Login/Login';
 
 function App() {
   return (

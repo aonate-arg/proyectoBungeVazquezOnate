@@ -1,6 +1,4 @@
 
-import React from 'react'
-
 function Footer(){
     return (
     <footer className="alert mt-4 text-center footer">

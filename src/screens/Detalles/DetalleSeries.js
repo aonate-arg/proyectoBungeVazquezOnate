@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
 import Cookies from 'universal-cookie'
 const API = "0b50b82888e5bf5a47ee0f15c8629906"
 const cookies = new Cookies()
