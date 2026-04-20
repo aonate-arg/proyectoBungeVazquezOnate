@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
-const API= "b4012469dde0367276c9701f8ecc44fe"
-class Series extends Component {
+const API= "0b50b82888e5bf5a47ee0f15c8629906"
+class SeccionSeries extends Component {
    constructor(props) {
         super(props)
         this.state = {
@@ -30,7 +30,7 @@ class Series extends Component {
                             imagen={series.poster_path}
                             descripcion={series.overview} />
 
-                    ))}<Link to="/Series">Ver todas las series</Link>
+                    ))}<Link to="/Series" className='verMasBoton'>Ver todas las series</Link>
                 </section>}
             </React.Fragment>
         )
@@ -39,4 +39,4 @@ class Series extends Component {
   }
 /*Para diferenciar entre pelicula y serie en cada card que corresponde le agrego el tipo*/
 
-export default Series
+export default SeccionSeries

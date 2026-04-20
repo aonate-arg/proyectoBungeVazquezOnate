@@ -63,23 +63,23 @@ render() {
    return (
      <React.Fragment>
        <Header/>
-       <h2 class="alert alert-primary">Registro</h2>
+       <h2 className="alert alert-primary">Registro</h2>
 
 
-       <div class="row justify-content-center">
-           <div class="col-md-6">
+       <div className="row justify-content-center">
+           <div className="col-md-6">
                <form onSubmit={(e)=> {e.preventDefault() ;this.registro()}}>
-                   <div class="form-group">
+                   <div className="form-group">
                        <label for="email">Email</label>
                        <input onChange={(e)=> this.setState({email: e.target.value})} type="email" className="form-control" id="email" placeholder="Ingresá tu email"/>
                    </div>
-                   <div class="form-group">
+                   <div className="form-group">
                        <label for="password">Contraseña</label>
                        <input onChange={(e)=> this.setState({password: e.target.value})} type="password" className="form-control" id="password" placeholder="Ingresá tu contraseña"/>
                    </div>
-                   <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+                   <button type="submit" className="btn btn-primary btn-block">Registrarse</button>
                </form>
-               <p class="mt-3 text-center">¿Ya tenés cuenta? <Link to="/Login">Iniciar Sesion</Link></p>
+               <p className="mt-3 text-center">¿Ya tenés cuenta? <Link to="/Login">Iniciar Sesion</Link></p>
            </div>
        </div>
        <Footer/>

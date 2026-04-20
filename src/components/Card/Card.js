@@ -67,17 +67,18 @@ class Card extends Component {
             <article className="single-card-movie">
                 <h5 className="card-title">{this.props.titulo}</h5>
 
-                <img
-                    src={"https://image.tmdb.org/t/p/w342/" + this.props.imagen}
+                
+                <div className="cardBody" >
+                    <img
+                    src={"https://image.tmdb.org/t/p/original/" + this.props.imagen}
                     className="card-img-top"
                     alt="..."
                 />
-                <div className="cardBody" >
                     <button onClick={() => this.state.verMas ? this.MostrarMenos() : this.MostrarMas()}>{this.state.verMas == true ? "Mostrar descripción" : "Ocultar descripción"}</button>
                     <p className={this.state.verMas ? "card-text-hide" : "card-text-show"}>{this.props.descripcion}</p>
                     <Link to={this.props.type == "movie" ? `/DetallePeliculas/${this.props.id}` : `/DetalleSeries/${this.props.id}`} className="btn btn-primary">Ver más</Link>
 
-                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id}>
+                    <button onClick={() => this.state.estadoFavoritos == false ? this.agregarfav(this.props.id, this.props.type) : this.Eliminar(this.props.id, this.props.type)} value={this.props.id} className='favoritos'>
                         {this.state.valor}
                     </button>
 

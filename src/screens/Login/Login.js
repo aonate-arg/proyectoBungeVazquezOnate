@@ -60,7 +60,7 @@ class Login extends Component {
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <form onSubmit={(e)=> {e.preventDefault(); this.login()}}>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="email">Email</label>
                                 <input onChange={(e)=> this.setState({email: e.target.value})} type="email" className="form-control" id="email" placeholder="Ingresá tu email"/>
                             </div>
@@ -70,7 +70,7 @@ class Login extends Component {
                             </div>
                             <button type="submit" className="btn btn-primary btn-block">Iniciar sesión</button>
                         </form>
-                        <p class="mt-3 text-center">¿No tenés cuenta? <Link to="/Register">Registrarse</Link></p> 
+                        <p className="mt-3 text-center">¿No tenés cuenta? <Link to="/Register">Registrarse</Link></p> 
                     </div>
                 </div>
 

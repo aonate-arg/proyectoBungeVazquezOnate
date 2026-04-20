@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
-const API = "b4012469dde0367276c9701f8ecc44fe"
-class Peliculas extends Component {
+const API = "0b50b82888e5bf5a47ee0f15c8629906"
+class SeccionPeliculas extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -38,7 +38,7 @@ class Peliculas extends Component {
                             imagen={pelicula.poster_path}
                             descripcion={pelicula.overview} />
 
-                    ))}<Link to="/Peliculas">Ver todas las peliculas</Link>
+                    ))}<Link to="/Peliculas" className='verMasBoton'>Ver todas las peliculas</Link>
                 </section>
                 }
             </React.Fragment>
@@ -47,7 +47,7 @@ class Peliculas extends Component {
 }
 
 
-export default Peliculas
+export default SeccionPeliculas
 /*el buscador de filter tiene que ser un componente o aca adentro esta bien?*/
 /*Agregar cargando y ver si esta bien primero filter y despues map*/
 /*{this.state.datos.map((pelicula, idx) => (
