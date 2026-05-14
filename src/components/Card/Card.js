@@ -1,48 +1,44 @@
-import React, { Component } from "react";
+import {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
-class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      estadoFavoritos: false,
-      valor: "🩶",
-      verMas: true,
-      logi: false,
-    };
-  }
-
-  componentDidMount() {
-    let tipo = this.props.type;
+function Card(props) {
+  const [estadoFavoritos, setEstadoFavoritos]= useState(false);
+  const [valor, setValor]= useState(["🩶"]);
+  const [verMas, setVerMas]= useState(true);
+  const [logi, setLogi]= useState(false);
+  
+  useEffect(()=>{
+    let tipo = props.type;
     let storage = localStorage.getItem(tipo);
     let storageJson = JSON.parse(storage);
 
     if (storageJson !== null) {
       let esFavorito =
-        storageJson.filter((id) => id === this.props.id).length > 0;
+        storageJson.filter((id) => id === props.id).length > 0;
       if (esFavorito) {
-        this.setState({ estadoFavoritos: true, valor: "♥️" });
-      }
-    }
+        setEstadoFavoritos(true);
+        setValor("♥️")
+     
+      }}
+    verificar();
 
-    this.verificar();
-  }
+  }, []);
 
-  verificar() {
+ 
+   
+  function verificar() {
     let logeado = cookies.get("userEmail");
-
     if (logeado != null) {
-      this.setState({ logi: true });
+      setLogi(true);
     } else {
-      this.setState({ logi: false });
+      setLogi(false);
     }
-    console.log(logeado);
-    console.log(this.state);
+
   }
 
-  agregarfav(id, tipo) {
+ function agregarfav(id, tipo) {
     let storage = localStorage.getItem(tipo);
     let storageJson = JSON.parse(storage);
     if (storageJson == null) {
@@ -54,59 +50,57 @@ class Card extends Component {
       let storageString = JSON.stringify(storageJson);
       localStorage.setItem(tipo, storageString);
     }
-    this.setState({ estadoFavoritos: true, valor: "♥️" });
+    setEstadoFavoritos(true);
+    setValor("♥️");
   }
 
-  Eliminar(id, tipo) {
+  function Eliminar(id, tipo) {
     let listFav = localStorage.getItem(tipo);
     let listFavJson = JSON.parse(listFav);
     let nuevaListFav = listFavJson.filter((i) => i !== id);
     let newListFavJson = JSON.stringify(nuevaListFav);
     localStorage.setItem(tipo, newListFavJson);
-    this.setState({ valor: "🩶", estadoFavoritos: false });
+    setValor("🩶");
+    setEstadoFavoritos(false);
+
+  function MostrarMas() {
+    setVerMas(true);
+   
   }
 
-  MostrarMas() {
-    this.setState({
-      verMas: true,
-    });
+  function MostrarMenos() {
+    setVerMas(false);
   }
 
-  MostrarMenos() {
-    this.setState({
-      verMas: false,
-    });
-  }
 
-  render() {
     return (
       <article className="single-card-movie">
-        <h5 className="card-title">{this.props.titulo}</h5>
+        <h5 className="card-title">{props.titulo}</h5>
         <img
-          src={"https://image.tmdb.org/t/p/original/" + this.props.imagen}
+          src={"https://image.tmdb.org/t/p/original/" + props.imagen}
           className="card-img-top"
           alt="..."
         />
         <div className="cardBody">
           <button
             onClick={() =>
-              this.state.verMas ? this.MostrarMenos() : this.MostrarMas()
+              verMas ? this.MostrarMenos() : this.MostrarMas()
             }
           >
-            {this.state.verMas == true
+            {verMas == true
               ? "Mostrar descripción"
               : "Ocultar descripción"}
           </button>
           <p
-            className={this.state.verMas ? "card-text-hide" : "card-text-show"}
+            className={verMas ? "card-text-hide" : "card-text-show"}
           >
-            {this.props.descripcion}
+            {props.descripcion}
           </p>
           <Link
             to={
-              this.props.type == "movie"
-                ? `/DetallePeliculas/${this.props.id}`
-                : `/DetalleSeries/${this.props.id}`
+              props.type == "movie"
+                ? `/DetallePeliculas/${props.id}`
+                : `/DetalleSeries/${props.id}`
             }
             className="btn btn-primary"
           >
@@ -115,11 +109,11 @@ class Card extends Component {
           <button
             onClick={() =>
               this.state.estadoFavoritos == false
-                ? this.agregarfav(this.props.id, this.props.type)
-                : this.Eliminar(this.props.id, this.props.type)
+                ? this.agregarfav(props.id, props.type)
+                : this.Eliminar(props.id, props.type)
             }
-            value={this.props.id}
-            className={this.state.logi ? "favoritos" : "card-text-hide"}
+            value={props.id}
+            className={logi ? "favoritos" : "card-text-hide"}
           >
             {this.state.valor}
           </button>

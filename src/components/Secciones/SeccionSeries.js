@@ -1,29 +1,25 @@
-import React, { Component } from 'react'
+import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Card from "../Card/Card";
 
 const API= "0b50b82888e5bf5a47ee0f15c8629906"
-class SeccionSeries extends Component {
-   constructor(props) {
-        super(props)
-        this.state = {
-            datos: []
-        };
-    }
-    componentDidMount() {
-        fetch('https://api.themoviedb.org/3/tv/airing_today?api_key=' + API)
+function SeccionSeries(props) {
+    const [datos, setDatos]= useState([]);
+  useEffect(()=> {
+    fetch('https://api.themoviedb.org/3/tv/airing_today?api_key=' + API)
             .then(response => response.json())
-            .then(data => this.setState({ datos: data.results }))
+            .then(data => setDatos( data.results))
             .catch(error => console.log(error));
-    }
-    render() {
+  }, [])
+   
+
         return (
-            <React.Fragment>
+            <div>
                 <h2 className="alert alert-primary">Series now playing</h2>
-                {this.state.datos.length === 0?
+                {datos.length == 0?
                 <h3>Cargando...</h3>:
                 <section className="row cards" id="on-air-today">
-                    {this.state.datos.filter((series, idx) => idx<4).map((series) => (
+                    {datos.filter((series, idx) => idx<4).map((series) => (
                         <Card type="serie"
                             key={series.id}
                             titulo={series.name}
@@ -33,11 +29,11 @@ class SeccionSeries extends Component {
 
                     ))}<Link to="/Series" className='verMasBoton'>Ver todas las series</Link>
                 </section>}
-            </React.Fragment>
+            </div>
         )
     }
     
-  }
+  
 
 
 export default SeccionSeries

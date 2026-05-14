@@ -1,26 +1,20 @@
-import React, { Component } from 'react'
+import {useState, useEffect} from 'react';
 import Card from '../Card/Card'
 
 const API = "0b50b82888e5bf5a47ee0f15c8629906"
-class FavMovies extends Component {
-  constructor() {
-    super()
-    this.state = {
-      tdslosdatos: [],
-      cargados: false
-    }
-  }
+function FavMovies() {
+  const [tdslosdatos, setTdslosdatos]= useState([]);
+  const [cargados, setCargados]= useState(false);
 
-
-  componentDidMount() {
+  useEffect(()=>{
     let listFav = localStorage.getItem("movie")
     console.log(listFav);
     let listFavJson = JSON.parse(listFav);
 
-    console.log('listFavJSON movies', listFavJson);
 
     if (listFavJson === null || listFavJson.lenght === 0) {
-      this.setState({ cargados: false })
+      setCargados(false);
+
     } else {
       const favsRecuperados = []
       listFavJson.map((i) =>
@@ -28,24 +22,26 @@ class FavMovies extends Component {
           .then(response => response.json())
           .then(data => {
             favsRecuperados.push(data)
-            this.setState({ tdslosdatos: favsRecuperados, cargados: true })
+            setTdslosdatos(favsRecuperados);
+            setCargados(true)
           })
           .catch(error => console.log(error))
       )
     }
-  }
 
-  render() {
+  })
+ 
+
     return (
-      <React.Fragment>
+      <div>
         <h2 className="alert alert-primary">Peliculas Favoritas</h2>
         <div>
           <section className="row cards" id="movie">
-            {this.state.cargados == false ?
+            {cargados == false ?
               <p className="noresult">No hay peliculas guardadas</p>
-              : this.state.tdslosdatos.length == 0 ?
+              :tdslosdatos.length == 0 ?
                 <p>Cargando</p> :
-                this.state.tdslosdatos.map((peliculas) => (
+                tdslosdatos.map((peliculas) => (
                   <Card
                     key={peliculas.id}
                     type="movie"
@@ -61,8 +57,8 @@ class FavMovies extends Component {
 
           </section>
         </div>
-      </React.Fragment>
+      </div>
     )
   }
-}
+
 export default FavMovies
